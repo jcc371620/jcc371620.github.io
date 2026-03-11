@@ -1,10 +1,10 @@
-# .github.io
+# JCC的个人网站
 
-# Welcome 👋
+# WELCOME👋
 
 ### 🎯 About me
 * Location：Shanghai
-* 爱好：羽毛球、摄影、旅行
+* Hobby：羽毛球、摄影、旅行
 * Mail:
 * Phone:
 * Address:
