@@ -1,3 +1,4 @@
+![Header](https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200)
 # JCC的个人网站
 
 # WELCOME👋
@@ -8,6 +9,9 @@
 * Mail:
 * Phone:
 * Address:
+
+### 🛠 我的技能树
+`Python` `Salesforce` `自动化测试` `Figma`
 
 ### 🚀 我的项目
 1. [GitHub 个人网站](https://jcc371620.github.io)
