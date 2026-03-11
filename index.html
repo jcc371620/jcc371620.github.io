@@ -43,15 +43,18 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #222;
             padding: 20px;
             margin-bottom: 20px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #333; /* 初始边框颜色 */
         }
+        /* 添加悬停（Hover）状态的效果 */
         .project-card:hover {
-            border-color: #fff;
-            background-color: #111;
-            transform: translateY(-2px);
+            transform: translateY(-5px); /* 向上浮动 5 像素 */
+            border-color: #fff;           /* 边框变亮/变白 */
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); /* 增加一个淡淡的白色倒影 */
+            background-color: #111;       /* 背景稍微变浅一点点 */
         }
         .project-card h4 { margin: 0 0 5px 0; }
         .project-card p { margin: 0; font-size: 0.85rem; color: #888; }
@@ -85,19 +88,29 @@
             <p>展示我的学习成果</p>
         </a>
 
+        <a href="..." class="project-card">
+            <h4>Power BI 作品集</h4>
+            <p>基于多维数据建模的交互式看板，通过动态可视化分析业务趋势，驱动决策支持。</p>
+            <div class="tag-container">
+                <span class="tag">Power Query</span>
+                <span class="tag">DAX</span>
+                <span class="tag">SQL</span>
+            </div>
+        </a>
+        
          <a href="https://www.Axure.com/file/..." class="project-card" target="_blank">
-            <h4>Power BI作品集</h4>
-            <p>展示我的学习成果</p>
+            <h4>Tableau作品集</h4>
+            <p>基于多维数据建模的交互式看板，通过动态可视化分析业务趋势，驱动决策支持。</p>
         </a>
 
          <a href="https://www.Axure.com/file/..." class="project-card" target="_blank">
             <h4>Axure作品集</h4>
-            <p>展示我的学习成果</p>
+            <p>高保真业务系统原型设计，涵盖复杂逻辑交互与用户路径梳理，提升需求转化效率。</p>
         </a>
 
          <a href="https://www.figma.com/file/..." class="project-card" target="_blank">
             <h4>流程图作品集</h4>
-            <p>展示我的学习成果</p>
+            <p>利用 BPMN 2.0 标准梳理端到端业务流程，识别瓶颈并优化跨部门协作效能。</p>
         </a>
 
         
