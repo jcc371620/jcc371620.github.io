@@ -1,6 +1,6 @@
 # .github.io
 
-# 欢迎来到我的个人主页 👋
+# Welcome 👋
 
 ### 🎯 About me
 * Location：Shanghai
