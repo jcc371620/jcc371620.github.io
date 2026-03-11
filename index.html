@@ -5,42 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JCC | Personal Space</title>
     <style>
+        /* 基础样式保持黑白 */
         body {
-            background-color: #000; /* 纯黑背景 */
-            color: #fff;           /* 纯白文字 */
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            padding: 40px 20px;
-            max-width: 700px;
+            padding: 60px 20px;
+            max-width: 750px;
             margin: 0 auto;
         }
-        h1 { font-weight: 800; letter-spacing: -1px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        h2 { color: #888; font-size: 1.2rem; }
-        a { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
-        a:hover { color: #888; }
-        .project-card { border: 1px solid #333; padding: 15px; margin-bottom: 15px; transition: 0.3s; }
-        .project-card:hover { border-color: #fff; }
-        .footer { margin-top: 50px; font-size: 0.8rem; color: #444; }
+        
+        /* 导航栏链接样式 */
+        nav { margin-bottom: 40px; }
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #888;
+            transition: 0.3s;
+        }
+        nav a:hover { color: #fff; }
+
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0; }
+        .subtitle { color: #666; margin-bottom: 40px; }
+
+        /* 内容区超链接 */
+        .content a {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        .content a:hover { color: #888; }
+
+        /* 项目卡片 - 让整个卡片可以点击 */
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #222;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            border-color: #fff;
+            background-color: #111;
+            transform: translateY(-2px);
+        }
+        .project-card h4 { margin: 0 0 5px 0; }
+        .project-card p { margin: 0; font-size: 0.85rem; color: #888; }
+
+        .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid #222; padding-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>JCC</h1>
-    <h2>上海 / 开发者 / 摄影爱好者</h2>
-    
-    <p>专注于自动化测试与极简主义设计。</p>
 
-    <h3>Projects</h3>
-    <div class="project-card">
-        <strong>GitHub Pages Site</strong><br>
-        <small>我的第一个个人站点，永久部署在 GitHub。</small>
-    </div>
-    <div class="project-card">
-        <strong>Automation Script</strong><br>
-        <small>提升效率的 Python 自动化工具。</small>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="https://github.com/你的用户名" target="_blank">GitHub</a>
+        <a href="mailto:你的邮箱@example.com">Email</a>
+    </nav>
+
+    <h1>JCC.</h1>
+    <p class="subtitle">Shanghai / Developer / Minimalist</p>
+
+    <div class="content">
+        <p>你好！我是 JCC。目前正在研究自动化测试和前端开发。你可以通过 <a href="https://github.com" target="_blank">GitHub</a> 关注我的动态，或者查看我的 <a href="#projects">项目作品集</a>。</p>
+        
+        <h3 id="projects" style="margin-top: 40px;">Projects</h3>
+        
+        <a href="https://github.com/你的用户名/仓库1" class="project-card" target="_blank">
+            <h4>自动化测试脚本库</h4>
+            <p>基于 Python 的 Selenium 自动化测试框架，提升 50% 的测试效率。</p>
+        </a>
+
+        <a href="https://www.figma.com/file/..." class="project-card" target="_blank">
+            <h4>Figma 作品集</h4>
+            <p>包含 10+ 移动端 UI/UX 设计方案，走黑白极简风。</p>
+        </a>
     </div>
 
     <div class="footer">
-        © 2026 JCC. Stay hungry, stay foolish.
+        © 2026 JCC. Build with passion and terminal.
     </div>
+
 </body>
 </html>
