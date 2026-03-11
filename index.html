@@ -30,37 +30,69 @@
         h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0; }
         .subtitle { color: #666; margin-bottom: 40px; }
 
-        /* 内容区超链接 */
+        /* 内容区正文链接 */
         .content a {
             color: #fff;
-            text-decoration: underline;
             text-underline-offset: 4px;
         }
         .content a:hover { color: #888; }
 
-        /* 项目卡片 - 让整个卡片可以点击 */
+        /* 项目卡片样式优化 */
         .project-card {
             display: block;
-            text-decoration: none;
+            text-decoration: none !important; /* 核心：去掉整块卡片的下划线 */
             color: inherit;
-            padding: 20px;
+            padding: 24px;
             margin-bottom: 20px;
             transition: all 0.3s ease;
             cursor: pointer;
-            border: 1px solid #333; /* 初始边框颜色 */
+            border: 1px solid #222; 
+            background-color: #000;
         }
-        /* 添加悬停（Hover）状态的效果 */
+
+        /* 悬停效果 */
         .project-card:hover {
-            transform: translateY(-5px); /* 向上浮动 5 像素 */
-            border-color: #fff;           /* 边框变亮/变白 */
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); /* 增加一个淡淡的白色倒影 */
-            background-color: #111;       /* 背景稍微变浅一点点 */
+            transform: translateY(-5px); 
+            border-color: #fff;           
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05); 
+            background-color: #0a0a0a;       
         }
-        .project-card h4 { margin: 0 0 5px 0; }
+
+        .project-card h4 { 
+            margin: 0 0 8px 0; 
+            font-size: 1.2rem;
+            text-decoration: none !important; /* 确保标题没有下划线 */
+        }
+
         .project-card p {
-            margin: 0; font-size: 0.85rem; color: #888;
+            margin: 0; 
+            font-size: 0.9rem; 
+            color: #888;
+            text-decoration: none !important; /* 确保描述没有下划线 */
         }
+
+        /* 灰色技术标签样式 */
+        .tag-container {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            font-size: 10px;
+            color: #666; 
+            background: #111; 
+            padding: 2px 10px;
+            border-radius: 4px;
+            border: 1px solid #222;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid #222; padding-top: 20px; }
+        
+        /* 平滑滚动 */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -72,53 +104,73 @@
     </nav>
 
     <h1>陈诗洁 | Jessy Chen</h1>
-    <p class="subtitle">Shanghai | PwC AC Shanghai | Quality Assurance  | Business Analyst</p>
+    <p class="subtitle">Shanghai | PwC AC Shanghai | Quality Assurance | Business Analyst</p>
 
     <div class="content">
-        <p>欢迎来到我的个人网站，我将陆续上传自己的学习成果，你可以通过 <a href="https://github.com" target="_blank">GitHub</a> 关注我的动态，或者查看我的 <a href="#projects">项目作品集</a>，谢谢。</p>
+        <p>欢迎来到我的个人网站，我将陆续上传自己的学习成果。你可以通过 <a href="https://github.com/jcc371620" target="_blank">GitHub</a> 关注我的动态，或者查看我的 <a href="#projects">项目作品集</a>。</p>
         
-        <h3 id="projects" style="margin-top: 40px;">Projects</h3>
+        <h3 id="projects" style="margin-top: 40px; border-bottom: 1px solid #222; padding-bottom: 10px;">Projects</h3>
         
         <a href="https://github.com/jcc371620/Automation-Projects" class="project-card" target="_blank">
-            <h4>自动化脚本  <small style="color: #888; font-weight: normal;">(Test Automation / Scripting))</small></h4>
-            <p>集成持续部署流水线，将回归测试周期缩短，显著提升测试效率。</p>
+            <h4>自动化脚本 <small style="color: #666; font-weight: normal;">(Test Automation / Scripting)</small></h4>
+            <p>基于 Selenium 的端到端自动化方案，集成持续部署流水线，显著提升回归测试效率。</p>
+            <div class="tag-container">
+                <span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Pytest</span>
+            </div>
         </a>
 
-        <a href="https://www.figma.com/file/..." class="project-card" target="_blank">
-            <h4>Figma 作品集 <small style="color: #888; font-weight: normal;">(UI/UX Design)</small></h4>
-            <p>遵循Ant Design规范的B端系统原型设计，包含原子化组件库搭建与高保真交互模拟，专注于提升用户操作效率与视觉一致性。</p>
+        <a href="#" class="project-card" target="_blank">
+            <h4>Figma 作品集 <small style="color: #666; font-weight: normal;">(UI/UX Design)</small></h4>
+            <p>遵循 Ant Design 规范的 B 端系统设计，包含原子化组件库搭建与高保真交互模拟。</p>
+            <div class="tag-container">
+                <span class="tag">UI/UX</span><span class="tag">Component Library</span><span class="tag">Ant Design</span>
+            </div>
         </a>
 
-        <a href="..." class="project-card">
-            <h4>Power BI 作品集  <small style="color: #888; font-weight: normal;">(BI Analytics)</small></h4>
+        <a href="#" class="project-card">
+            <h4>Power BI 作品集 <small style="color: #666; font-weight: normal;">(BI Analytics)</small></h4>
             <p>基于多维数据建模的交互式看板，通过动态可视化分析业务趋势，驱动决策支持。</p>
+            <div class="tag-container">
+                <span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">SQL</span>
+            </div>
         </a>
         
-         <a href="https://www.Axure.com/file/..." class="project-card" target="_blank">
-            <h4>Tableau作品集 (<small style="color: #888; font-weight: normal;">(Data Visualization)</small></h4>
-            <p>利用LOD表达式与复杂参数构建的商业智能仪表盘，实现千万级数据的实时下钻分析，敏锐捕捉业务增长点与潜在风险。</p>
+        <a href="#" class="project-card" target="_blank">
+            <h4>Tableau 作品集 <small style="color: #666; font-weight: normal;">(Data Visualization)</small></h4>
+            <p>利用 LOD 表达式与复杂参数构建商业智能仪表盘，实现千万级数据的实时下钻分析。</p>
+            <div class="tag-container">
+                <span class="tag">LOD Expressions</span><span class="tag">Visual Analytics</span>
+            </div>
         </a>
 
-         <a href="https://www.Axure.com/file/..." class="project-card" target="_blank">
-            <h4>Axure作品集  <small style="color: #888; font-weight: normal;">(Interactive Prototyping)</small></h4>
+        <a href="#" class="project-card" target="_blank">
+            <h4>Axure 作品集 <small style="color: #666; font-weight: normal;">(Interactive Prototyping)</small></h4>
             <p>高保真业务系统原型设计，涵盖复杂逻辑交互与用户路径梳理，提升需求转化效率。</p>
+            <div class="tag-container">
+                <span class="tag">Prototyping</span><span class="tag">User Flow</span><span class="tag">Logic</span>
+            </div>
         </a>
 
-         <a href="https://www.figma.com/file/..." class="project-card" target="_blank">
-            <h4>Xmind作品集  <small style="color: #888; font-weight: normal;">(Mind Mapping & Logic)</small></h4>
-            <p>深度业务逻辑解构与产品架构规划，通过多维思维导图梳理复杂业务场景，确保需求分析阶段的逻辑完整性与无死角覆盖。</p>
+        <a href="#" class="project-card" target="_blank">
+            <h4>Xmind 逻辑看板 <small style="color: #666; font-weight: normal;">(Business Logic)</small></h4>
+            <p>深度业务逻辑解构与产品架构规划，通过思维导图确保需求分析的逻辑完整性。</p>
+            <div class="tag-container">
+                <span class="tag">Logic Mapping</span><span class="tag">Structure Analysis</span>
+            </div>
         </a>
 
-         <a href="https://www.figma.com/file/..." class="project-card" target="_blank">
-            <h4>Visio作品集  <small style="color: #888; font-weight: normal;">(Process Modeling)</small></h4>
-            <p>遵循 BPMN 2.0 标准的专业业务流程建模，精准还原跨部门复杂协作路径，通过泳道图识别流程冗余并提供数字化优化方案。</p>
+        <a href="#" class="project-card" target="_blank">
+            <h4>Visio 流程建模 <small style="color: #666; font-weight: normal;">(Process Modeling)</small></h4>
+            <p>遵循 BPMN 2.0 标准梳理跨部门协作路径，识别流程冗余并提供数字化优化方案。</p>
+            <div class="tag-container">
+                <span class="tag">BPMN 2.0</span><span class="tag">Swimlane</span><span class="tag">Workflow</span>
+            </div>
         </a>
-
         
     </div>
 
     <div class="footer">
-        © 2026 陈诗洁. Build with passion and terminal.
+        © 2026 陈诗洁 | Built with Passion.
     </div>
 
 </body>
