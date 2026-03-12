@@ -33,7 +33,7 @@
         /* 项目卡片核心样式 */
         .project-card {
             display: block;
-            text-decoration: none !important; /* 强制移除所有下划线 */
+            text-decoration: none !important;
             color: inherit;
             padding: 24px;
             margin-bottom: 20px;
@@ -50,22 +50,8 @@
             background-color: #0a0a0a;        
         }
 
-        /* 确保内部文字没有任何修饰 */
-        .project-card h4, .project-card p, .project-card span {
-            text-decoration: none !important;
-            border-bottom: none !important;
-        }
-
-        .project-card h4 { 
-            margin: 0 0 8px 0; 
-            font-size: 1.2rem;
-        }
-
-        .project-card p {
-            margin: 0; 
-            font-size: 0.9rem; 
-            color: #888;
-        }
+        .project-card h4 { margin: 0 0 8px 0; font-size: 1.2rem; }
+        .project-card p { margin: 0; font-size: 0.9rem; color: #888; }
 
         /* 技术标签样式 */
         .tag-container {
@@ -85,11 +71,57 @@
             letter-spacing: 0.5px;
         }
 
+        /* 密码输入框提示样式 */
+        #password-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .password-box {
+            background: #111;
+            padding: 30px;
+            border: 1px solid #333;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .password-box input {
+            background: #000;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px;
+            margin: 15px 0;
+            width: 200px;
+            outline: none;
+        }
+        .password-box button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
         .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid #222; padding-top: 20px; }
         html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
+
+    <div id="password-overlay">
+        <div class="password-box">
+            <h4>请输入访问密码</h4>
+            <input type="password" id="pw-input" placeholder="Password">
+            <br>
+            <button onclick="checkPassword()">确认</button>
+            <button onclick="closeOverlay()" style="background: transparent; color: #888;">取消</button>
+            <p id="error-msg" style="color: #ff4d4d; font-size: 12px; margin-top: 10px;"></p>
+        </div>
+    </div>
 
     <nav>
         <a href="index.html">Home</a>
@@ -122,51 +154,41 @@
             </div>
         </a>
 
-        <a href="#" class="project-card">
-            <h4>Power BI 作品集 <small style="color: #666; font-weight: normal;">(BI Analytics)</small></h4>
-            <p>针对快消行业销量的多维数据看板，通过动态可视化识别核心增长驱动力。</p>
-            <div class="tag-container">
-                <span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">SQL</span>
-            </div>
-        </a>
-
-        <a href="#" class="project-card">
-            <h4>draw.io 开源架构建模 <small style="color: #666; font-weight: normal;">(Open Source Modeling)</small></h4>
-            <p>利用开源工具构建高标准业务流图，支持跨团队协作的数字化流程资产管理。</p>
-            <div class="tag-container">
-                <span class="tag">Workflow</span><span class="tag">Architecture</span><span class="tag">Open Source</span>
-            </div>
-        </a>
-
-        <a href="#" class="project-card">
-            <h4>Figma 作品集 <small style="color: #666; font-weight: normal;">(UI/UX Design)</small></h4>
-            <p>遵循 Ant Design 规范的 B 端系统设计，包含高保真交互模拟。</p>
-            <div class="tag-container">
-                <span class="tag">UI/UX</span><span class="tag">Ant Design</span>
-            </div>
-        </a>
-
-        <a href="#" class="project-card">
-            <h4>Axure 作品集 <small style="color: #666; font-weight: normal;">(Interactive Prototyping)</small></h4>
-            <p>高保真业务系统原型，涵盖复杂逻辑交互与用户路径梳理。</p>
-            <div class="tag-container">
-                <span class="tag">Prototyping</span><span class="tag">Logic</span>
-            </div>
-        </a>
-
-        <a href="https://jcc371620.github.io/Assets/B2B.pdf" target="_blank" rel="noopener noreferrer" class="project-card">
+        <div onclick="openOverlay()" class="project-card">
             <h4>Xmind 逻辑看板 <small style="color: #666; font-weight: normal;">(Business Logic)</small></h4>
             <p>通过思维导图进行深度业务解构，确保需求分析的逻辑完整性。</p>
             <div class="tag-container">
                 <span class="tag">Logic Mapping</span>
             </div>
-        </a>
+        </div>
         
     </div>
 
     <div class="footer">
         © 2026 陈诗洁 | Built with Passion for Excellence.
     </div>
+
+    <script>
+        function openOverlay() {
+            document.getElementById('password-overlay').style.display = 'flex';
+        }
+
+        function closeOverlay() {
+            document.getElementById('password-overlay').style.display = 'none';
+            document.getElementById('error-msg').innerText = '';
+        }
+
+        function checkPassword() {
+            var pw = document.getElementById('pw-input').value;
+            // 请在此处修改你的密码，当前设为 3716
+            if (pw === '8888888888') {
+                // 跳转地址请根据你的实际路径调整
+                window.location.href = "https://jcc371620.github.io/Assets/B2B.pdf";
+            } else {
+                document.getElementById('error-msg').innerText = '密码错误，请联系作者获取。';
+            }
+        }
+    </script>
 
 </body>
 </html>
