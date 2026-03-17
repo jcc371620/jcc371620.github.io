@@ -24,6 +24,7 @@
             max-width: 850px; 
             margin: 0 auto; 
             -webkit-font-smoothing: antialiased;
+            position: relative; /* 为绝对定位的图标提供参考 */
         }
 
         /* 极简导航 */
@@ -52,7 +53,7 @@
             color: var(--dora-blue); margin: 60px 0 24px 0; font-weight: 700;
         }
 
-        /* 灵动的爱好展示区 */
+        /* 爱好展示区 */
         .hobby-grid { display: flex; gap: 16px; flex-wrap: wrap; }
         .hobby-card {
             background: #fff;
@@ -101,20 +102,47 @@
         .pocket-card h4 { margin: 0 0 12px 0; font-size: 19px; }
         .pocket-card p { margin: 0; font-size: 14px; color: var(--text-gray); line-height: 1.7; }
         
+        /* 优化后的 Tag 样式 */
         .tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { 
-            font-size: 10px; color: var(--dora-blue); background: rgba(0,160,233,0.05); 
-            padding: 3px 10px; border-radius: 4px; font-weight: 600; border: 1px solid rgba(0,160,233,0.1);
+            font-size: 12px; 
+            letter-spacing: 0.3px; 
+            color: var(--dora-blue); 
+            background: rgba(0,160,233,0.05); 
+            padding: 4px 12px; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            border: 1px solid rgba(0,160,233,0.1);
+            transition: 0.2s;
+        }
+        .pocket-card:hover .tag {
+            background: rgba(0,160,233,0.1);
         }
 
         .footer { 
             margin-top: 100px; padding: 40px 0; border-top: 1px solid #eee; 
             font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; 
+            align-items: center; /* 垂直居中页脚内容 */
+        }
+
+        /* 融入的极简哆啦A梦图标 */
+        .dora-icon {
+            position: absolute;
+            bottom: 30px; /* 距离底部 30px */
+            right: 30px; /* 距离右侧 30px */
+            width: 40px; /* 图标宽度 */
+            height: 40px; /* 图标高度 */
+            opacity: 0.1; /* 极低的透明度，使其像隐形水印 */
+            transition: opacity 0.3s ease; /* 悬停时的渐变效果 */
+        }
+        .dora-icon:hover {
+            opacity: 0.3; /* 悬停时稍微清晰一点 */
         }
 
         @media (max-width: 700px) { 
             .grid { grid-template-columns: 1fr; }
             h1 { font-size: 32px; }
+            .dora-icon { bottom: 20px; right: 20px; width: 30px; height: 30px; } /* 移动端图标缩小 */
         }
     </style>
 </head>
@@ -123,7 +151,7 @@
     <nav id="main-nav"></nav>
 
     <header class="hero">
-        <h1>陈诗洁 | Jessy Chen</h1>
+        <h1>陈诗洁 Jessy Chen</h1>
         <div class="red-collar"></div>
         <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环。</p>
     </header>
@@ -147,6 +175,8 @@
         <div>© 2026 Jessy Chen. Built with Dora-Minimalism Spirit.</div>
         <div style="color: var(--dora-red); font-weight: bold;">叮当~ 未来已来</div>
     </footer>
+
+    <img src="path/to/your/minimalist-doraemon-icon.svg" alt="Doraemon Icon" class="dora-icon">
 
     <script>
         const projects = [
@@ -206,7 +236,7 @@
             { name: "HOME", url: "index.html" },
             { name: "GITHUB", url: "https://github.com/jcc371620", target: "_blank" },
             { name: "LINKEDIN", url: "#" },
-            { name: "CONTACT", url: "mailto:your-email@example.com" } // 邮箱信息已脱敏
+            { name: "CONTACT", url: "mailto:your-email@example.com" } 
         ];
         document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
