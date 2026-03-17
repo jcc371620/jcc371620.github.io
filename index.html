@@ -12,9 +12,15 @@
             --bg-silver: #f8f9fa;   
             --text-dark: #2c3e50;   
             --text-gray: #95a5a6;
-            --border-light: rgba(0, 160, 233, 0.1);
+            --border-light: rgba(0, 160, 233, 0.15);
         }
         
+        /* 任意门入场动画 */
+        @keyframes doorOpen {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         body { 
             background: var(--bg-silver); 
             color: var(--text-dark); 
@@ -23,110 +29,93 @@
             padding: 80px 24px; 
             max-width: 850px; 
             margin: 0 auto; 
+            animation: doorOpen 0.8s ease-out;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
 
-        /* 极简导航 */
-        nav { margin-bottom: 80px; display: flex; gap: 40px; }
-        nav a { 
-            text-decoration: none; font-size: 13px; color: var(--text-gray); 
-            font-weight: 600; transition: 0.3s; letter-spacing: 1px;
-        }
-        nav a:hover { color: var(--dora-blue); }
-
-        /* 顶部“竹蜻蜓”动态线条 */
-        .top-line {
-            position: fixed; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--dora-blue), transparent);
-            animation: propeller 3s infinite linear;
+        /* 竹蜻蜓：顶部动态线条 */
+        .propeller-line {
+            position: fixed; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--dora-blue), var(--dora-yellow), var(--dora-blue), transparent);
+            background-size: 200% 100%;
+            animation: flying 2s infinite linear;
             z-index: 1000;
         }
-        @keyframes propeller {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        @keyframes flying {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
-        /* 英雄区 */
+        nav { margin-bottom: 80px; display: flex; gap: 40px; }
+        nav a { text-decoration: none; font-size: 13px; color: var(--text-gray); font-weight: 600; transition: 0.3s; letter-spacing: 1px; }
+        nav a:hover { color: var(--dora-blue); }
+
         .hero { margin-bottom: 80px; }
-        h1 { font-size: 42px; font-weight: 700; margin: 0; letter-spacing: 1px; word-spacing: 4px; }
+        h1 { font-size: 42px; font-weight: 700; margin: 0; letter-spacing: 1px; }
+        
+        /* 红领巾与会晃动的铃铛 */
         .red-collar { 
-            width: 80px; height: 4px; background: var(--dora-red); 
-            margin: 20px 0 30px 0; border-radius: 2px; position: relative;
+            width: 80px; height: 5px; background: var(--dora-red); 
+            margin: 20px 0 30px 0; border-radius: 3px; position: relative;
         }
-        .red-collar::after {
-            content: ''; position: absolute; right: -15px; top: -3px; width: 10px; height: 10px; 
-            background: var(--dora-yellow); border-radius: 50%; box-shadow: 0 0 8px rgba(255,202,40,0.4);
+        .bell {
+            position: absolute; right: -12px; top: -4px; width: 12px; height: 12px; 
+            background: var(--dora-yellow); border-radius: 50%; 
+            box-shadow: 0 0 10px rgba(255,202,40,0.5);
+            cursor: pointer;
         }
-        .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 650px; line-height: 1.8; letter-spacing: 0.5px; }
-
-        /* 标题样式 + “次元口袋”圆弧 */
-        .section-title { 
-            font-size: 13px; text-transform: uppercase; letter-spacing: 2px; 
-            color: var(--dora-blue); margin: 60px 0 24px 0; font-weight: 700;
-            position: relative;
-        }
-        .pocket-curve {
-            width: 120px; height: 60px; border: 1.5px solid var(--border-light);
-            border-top: 0; border-radius: 0 0 60px 60px;
-            margin-top: -15px; margin-bottom: 30px; opacity: 0.5;
+        .bell:hover { animation: ring 0.5s infinite ease-in-out; }
+        @keyframes ring {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
         }
 
-        /* 爱好展示区 */
-        .hobby-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 650px; line-height: 1.8; }
+
+        .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--dora-blue); margin: 60px 0 10px 0; font-weight: 700; }
+        
+        /* 次元口袋弧线 */
+        .pocket-line {
+            width: 100px; height: 40px; 
+            border: 2px solid var(--border-light); border-top: 0;
+            border-radius: 0 0 50px 50px; margin-bottom: 40px;
+        }
+
+        .hobby-grid { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
         .hobby-card {
-            background: #fff; padding: 16px 24px; border-radius: 16px;
-            display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 160, 233, 0.04);
-            transition: all 0.3s ease;
+            background: #fff; padding: 14px 22px; border-radius: 20px;
+            display: flex; align-items: center; gap: 10px; font-size: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: 0.3s;
         }
-        .hobby-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 160, 233, 0.1);
-        }
+        .hobby-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,160,233,0.1); }
 
-        /* 项目网格 */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .pocket-card {
-            background: #ffffff; padding: 32px; border-radius: 20px; /* 圆角增加，更显亲和力 */
-            border: 1px solid var(--border-light);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: #ffffff; padding: 30px; border-radius: 24px;
+            border: 1px solid var(--border-light); transition: 0.4s;
             text-decoration: none; color: inherit; display: block;
         }
-        .pocket-card:hover { 
-            transform: translateY(-6px); 
-            box-shadow: 0 12px 30px rgba(0, 160, 233, 0.08); 
-            border-color: var(--dora-blue);
-        }
+        .pocket-card:hover { transform: translateY(-5px); border-color: var(--dora-blue); box-shadow: 0 10px 25px rgba(0,160,233,0.08); }
         
-        .pocket-card .sub-tag { font-size: 11px; color: var(--text-gray); font-weight: 700; margin-bottom: 10px; display: block; letter-spacing: 1px; }
-        .pocket-card h4 { margin: 0 0 12px 0; font-size: 19px; }
-        .pocket-card p { margin: 0; font-size: 14px; color: var(--text-gray); line-height: 1.7; }
-        
-        .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { 
-            font-size: 11px; color: var(--dora-blue); background: rgba(0,160,233,0.04); 
-            padding: 3px 9px; border-radius: 5px; font-weight: 600; border: 1px solid rgba(0,160,233,0.08);
-        }
+        .sub-tag { font-size: 11px; color: var(--text-gray); font-weight: 700; margin-bottom: 8px; display: block; }
+        .tag { font-size: 11px; color: var(--dora-blue); background: rgba(0,160,233,0.05); padding: 3px 10px; border-radius: 6px; font-weight: 600; margin-right: 5px; }
 
-        .footer { 
-            margin-top: 100px; padding: 40px 0; border-top: 1px solid #eee; 
-            font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; 
-        }
+        .footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid #eee; font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; }
 
-        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <div class="top-line"></div>
+    <div class="propeller-line"></div>
 
     <nav id="main-nav"></nav>
 
     <header class="hero">
         <h1>陈诗洁 | Jessy Chen</h1>
-        <div class="red-collar"></div>
-        <p class="hero-desc">梦想制造者 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环，一起让梦想起飞吧！</p>
+        <div class="red-collar"><div class="bell"></div></div>
+        <p class="hero-desc">竹蜻蜓执照 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环，一起让梦想起飞吧！</p>
     </header>
 
     <section>
@@ -141,7 +130,8 @@
 
     <section>
         <h2 class="section-title">Professional Pocket / 专业百宝袋</h2>
-        <div class="pocket-curve"></div> <div id="project-list" class="grid"></div>
+        <div class="pocket-line"></div>
+        <div id="project-list" class="grid"></div>
     </section>
 
     <footer class="footer">
@@ -151,65 +141,31 @@
 
     <script>
         const projects = [
-            { 
-                title: "自动化测试工程", sub: "QA", 
-                desc: "基于 Pytest 与 Playwright 封装 Page Object 模型，实现高复用性端到端回归测试，确保复杂业务逻辑在持续集成中的稳定性。", 
-                tags: ["Python", "Pytest", "Playwright"], 
-                url: "https://github.com/jcc371620/Automation-Projects" 
-            },
-            { 
-                title: "接口自动化与性能", sub: "Perf", 
-                desc: "利用 Requests 库构建接口测试组件，覆盖 API 核心路径校验；通过性能压测评估响应阈值，在后端链路预判逻辑风险。", 
-                tags: ["Requests", "Postman", "JMeter"], url: "#" 
-            },
-            { 
-                title: "DevOps 流水线建设", sub: "CI/CD", 
-                desc: "配置 GitHub Actions 自动化工作流，集成静态代码扫描与自动测试触发，优化部署反馈周期，打造透明化的质量流水线。", 
-                tags: ["GitHub Actions", "Docker", "Azure"], url: "#" 
-            },
-            { 
-                title: "数据分析与可视化", sub: "BI", 
-                desc: "通过 SQL 进行多表关联挖掘，利用 Power BI 构建销售 KPI 动态监控看板，将底层明细转化为支撑业务决策的直观洞察。", 
-                tags: ["SQL", "Power BI", "Tableau"], url: "#" 
-            },
-            { 
-                title: "Salesforce 系统管理", sub: "CRM", 
-                desc: "主导 Sales & Marketing Cloud 的配置优化，利用 SOQL 进行跨对象数据提取，实现 Consumer Cloud 环境下 O2O 渠道全生命周期数据整合。", 
-                tags: ["Sales Cloud", "Marketing Cloud", "Consumer Cloud", "SOQL"], url: "#" 
-            },
-            { 
-                title: "业务流程架构设计", sub: "Workflow", 
-                desc: "运用 BPMN 2.0 标准梳理跨部门协作链路，输出高标准化流程图与需求规格文档，消除业务传递中的逻辑冗余与理解偏差。", 
-                tags: ["Visio", "Xmind", "BPMN 2.0"], url: "#" 
-            },
-            { 
-                title: "交互设计与原型工程", sub: "UX/UI", 
-                desc: "遵循 Ant Design 规范，利用 Figma 产出高保真交互原型，通过原型走通复杂业务用例，大幅降低前后端开发的沟通成本。", 
-                tags: ["Figma", "Axure", "Sketch"], url: "#" 
-            },
-            { 
-                title: "质量工程策略咨询", sub: "Strategy", 
-                desc: "基于敏捷开发模式制定分层测试方案，通过风险识别与测试左移策略，在需求阶段介入质量预防，实现项目交付成本的最优化。", 
-                tags: ["Risk Analysis", "Agile", "Consulting"], url: "#" 
-            }
+            { title: "自动化测试工程", sub: "QA", desc: "基于 Pytest 与 Playwright 封装 POM 模型。", tags: ["Python", "Playwright"], url: "#" },
+            { title: "接口自动化与性能", sub: "Perf", desc: "Requests 库构建接口测试组件。", tags: ["Requests", "JMeter"], url: "#" },
+            { title: "DevOps 流水线建设", sub: "CI/CD", desc: "GitHub Actions 自动化工作流。", tags: ["CI/CD", "Docker"], url: "#" },
+            { title: "数据分析与可视化", sub: "BI", desc: "SQL 挖掘与 Power BI 监控看板。", tags: ["SQL", "Power BI"], url: "#" },
+            { title: "Salesforce 系统管理", sub: "CRM", desc: "SOQL 跨对象数据提取与配置优化。", tags: ["CRM", "SOQL"], url: "#" },
+            { title: "业务流程架构设计", sub: "Workflow", desc: "BPMN 2.0 标准梳理协作链路。", tags: ["Visio", "BPMN"], url: "#" },
+            { title: "交互设计与原型工程", sub: "UX/UI", desc: "Figma 产出高保真交互原型。", tags: ["Figma", "Axure"], url: "#" },
+            { title: "质量工程策略咨询", sub: "Strategy", desc: "敏捷开发下的分层测试方案。", tags: ["Agile", "Risk"], url: "#" }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
-            <a href="${p.url}" class="pocket-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
+            <a href="${p.url}" class="pocket-card">
                 <span class="sub-tag">${p.sub}</span>
                 <h4>${p.title}</h4>
                 <p>${p.desc}</p>
-                <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                <div style="margin-top:15px;">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
             </a>
         `).join('');
 
         const navLinks = [
-            { name: "HOME", url: "index.html" },
-            { name: "GITHUB", url: "https://github.com/jcc371620", target: "_blank" },
-            { name: "LINKEDIN", url: "#" },
+            { name: "HOME", url: "#" },
+            { name: "GITHUB", url: "https://github.com/jcc371620" },
             { name: "CONTACT", url: "mailto:your-email@example.com" } 
         ];
-        document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
+        document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}">${n.name}</a>`).join('');
     </script>
 </body>
 </html>
