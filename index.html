@@ -212,13 +212,43 @@
     <script>
         // 1. 项目数据
         const projects = [
-            { title: "Salesforce CRM系统", sub: "CRM", desc: "主导 Sales/Marketing/Consumer Cloud 跨云架构优化，利用 SOQL 实现高效数据治理。", tags: ["Sales Cloud", "Marketing Cloud", "Consumer Cloud", "SOQL"] },
-            { title: "自动化测试工程", sub: "AUTOMATION", desc: "基于 Python 开发全栈测试脚本，覆盖 Web/App 端，结合 Postman 实现接口级保障。", tags: ["Python", "Postman", "App", "Web", "Requests"] },
-            { title: "数据分析可视化", sub: "ANALYTICS", desc: "深挖异构数据，通过 Power BI 与 Tableau 还原业务全貌，实现质量决策闭环。", tags: ["SQL", "Python", "Power BI", "Data Analytics"] },
-            { title: "交互与原型工程", sub: "DESIGN", desc: "应用 Figma/Sketch 产出设计方案，利用交互细节提升 B 端产品的用户体验。", tags: ["Figma", "Sketch", "Axure", "App", "Web", "Visio"] },
-            { title: "业务流程架构设计", sub: "ARCHITECTURE", desc: "通过 Visio/Xmind 梳理底层逻辑，输出标准的 BPMN/UML 文档。", tags: ["Visio", "Xmind", "BPMN", "UML"] },
-            { title: "DevOps 流水线建设", sub: "DEVOPS", desc: "构建 CI/CD 自动化交付链，集成 Docker 与 GitHub Actions。", tags: ["GitHub Actions", "Docker", "CI/CD", "Git"] }
-        ];
+    { 
+        title: "Salesforce CRM管理系统", 
+        sub: "CRM", 
+        desc: "深度整合多云生态，通过跨云架构优化与 SOQL 精准治理，构建高可靠的客户全生命周期管理模型。", 
+        tags: ["SOQL","Sales Cloud", "Consumer Cloud","Marketing Cloud", "Data Governance"] 
+    },
+    { 
+        title: "全栈自动化质量工程", 
+        sub: "QUALITY ASSURANCE", 
+        desc: "搭建覆盖 Web 与移动端的端到端自动化体系，通过全链路接口监控与脚本治理，确保产品交付的一致性与稳定性。", 
+        tags: ["Pytest", "Automation", "E2E Testing","Playwright","Appium","Postman"] 
+    },
+    { 
+        title: "数据分析与决策可视化", 
+        sub: "DATA INTELLIGENCE", 
+        desc: "打破多维异构数据孤岛，利用敏捷 BI 技术还原业务全链路视图，驱动质量管理从“经验导向”向“数据决策”转型。", 
+        tags: ["Power BI", "SQL", "Tableau", "Decision Making","SAP Analytics Cloud"] 
+    },
+    { 
+        title: "交互体验与 B 端产品原型", 
+        sub: "UX/UI DESIGN", 
+        desc: "基于组件化思维驱动 B 端产品交互演进，通过高保真原型探索复杂业务场景下的极致用户体验与逻辑自洽。", 
+        tags: ["Figma","Axure","Sketch", "User Experience", "Prototyping"] 
+    },
+    { 
+        title: "业务逻辑与流程架构治理", 
+        sub: "BUSINESS ARCHITECTURE", 
+        desc: "深耕复杂业务建模，运用 BPMN 与 UML 标准实现底层逻辑的清晰定义与标准化归档，赋能产研团队高效协同。", 
+        tags: ["BPMN","Xmind","Visio","UML", "Logic Modeling"] 
+    },
+    { 
+        title: "持续交付与 DevOps 演进", 
+        sub: "DEVOPS & INFRA", 
+        desc: "践行 Infrastructure as Code 理念，构建高度自动化的 CI/CD 交付流水线，通过容器化部署实现研发效能的阶梯式提升。", 
+        tags: ["CI/CD", "Docker", "Efficiency","Azure DevOps", "Infrastructure as Code","Jenkins"] 
+    }
+];
 
         // 渲染卡片
         document.getElementById('project-list').innerHTML = projects.map((p, index) => `
