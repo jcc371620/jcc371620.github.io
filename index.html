@@ -6,79 +6,74 @@
     <title>Shijie Chen | Personal Space</title>
     <style>
         :root {
-            --bg: #0d1117;          /* 深蓝黑背景，接近 GitHub 暗色 */
-            --text: #c9d1d9;        /* 浅灰文字，不刺眼 */
+            --bg: #0d1117;
+            --text: #c9d1d9;
             --gray: #8b949e;
             --dark-gray: #30363d;
-            --accent: #00ff41;      /* 经典荧光绿 (黑客帝国绿) */
+            --accent: #00ff41; 
             --accent-dim: rgba(0, 255, 65, 0.1);
-            --border: #21262d;      /* 卡片边框 */
+            --border: #21262d;
         }
         
-        /* 全局基础：增加类似终端的打字机字体 */
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            font-family: "Fira Code", "Courier New", monospace; /* 优先使用等宽字体 */
-            line-height: 1.6; 
-            padding: 60px 20px; 
-            max-width: 750px; 
-            margin: 0 auto; 
-        }
-
-        /* 导航栏：霓虹效果 */
+        body { background: var(--bg); color: var(--text); font-family: "Fira Code", monospace; line-height: 1.6; padding: 60px 20px; max-width: 750px; margin: 0 auto; }
         nav { margin-bottom: 40px; border-bottom: 1px solid var(--dark-gray); padding-bottom: 20px; }
         nav a { margin-right: 20px; text-decoration: none; font-size: 0.9rem; color: var(--gray); transition: 0.3s; }
-        nav a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); } /* 霓虹发光 */
-
-        /* 标题：加粗，荧光绿 */
+        nav a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
         h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0; color: var(--accent); text-shadow: 0 0 15px var(--accent); }
         .subtitle { color: var(--gray); margin-bottom: 40px; font-size: 0.8rem; opacity: 0.7; }
-        
         h3 { margin-top: 40px; border-bottom: 1px solid var(--dark-gray); padding-bottom: 10px; color: var(--accent); }
 
-        /* 项目卡片：模拟终端窗口 */
-        .project-card { 
-            display: block; 
-            padding: 24px; 
-            margin-bottom: 20px; 
-            border: 1px solid var(--border); 
-            background: rgba(13, 17, 23, 0.8); /* 半透明背景 */
-            transition: 0.3s; 
-            cursor: pointer; 
-            text-decoration: none; 
-            color: inherit; 
-            position: relative;
-        }
-        
-        /* 悬停：卡片霓虹发光 */
-        .project-card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--accent); 
-            box-shadow: 0 0 20px var(--accent-dim); 
-        }
-
-        .project-card h4 { margin: 0 0 8px 0; font-size: 1.2rem; color: var(--text); }
-        .project-card h4 small { color: var(--gray); font-weight: normal; margin-left: 5px; font-size: 0.8rem; }
+        .project-card { display: block; padding: 24px; margin-bottom: 20px; border: 1px solid var(--border); background: rgba(13, 17, 23, 0.8); transition: 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 20px var(--accent-dim); }
+        .project-card h4 { margin: 0 0 8px 0; font-size: 1.2rem; }
         .project-card p { margin: 0; font-size: 0.85rem; color: var(--gray); }
         
-        /* 标签：代码高亮风格 */
         .tag-container { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { 
-            font-size: 10px; 
-            color: var(--accent); 
-            background: var(--accent-dim); /* 淡淡的荧光背景 */
-            padding: 2px 10px; 
-            border: 1px solid var(--accent); 
-            text-transform: uppercase; 
-            border-radius: 2px;
-        }
-
+        .tag { font-size: 10px; color: var(--accent); background: var(--accent-dim); padding: 2px 10px; border: 1px solid var(--accent); text-transform: uppercase; }
         .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid var(--border); padding-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
+
     <nav id="main-nav"></nav>
-    ... (剩余HTML和JS不变)
+
+    <h1>陈诗洁 | Jessy Chen</h1>
+    <p class="subtitle">Shanghai | PwC AC Shanghai | Quality Assurance | Business Analyst</p>
+    <p>作为 BA 与 QA 专家，我致力于通过数据驱动的分析与自动化的测试方案提升业务价值。</p>
+    
+    <h3 style="margin-top: 40px;">Projects</h3>
+    <div id="project-list"></div>
+
+    <div class="footer">© 2026 陈诗洁 | Built with Passion for Excellence.</div>
+
+    <script>
+        const projects = [
+            { title: "Salesforce 业务系统管理", sub: "CRM", desc: "基于 Salesforce 生态的客户关系管理方案，涵盖 O2O 全渠道数据整合。", tags: ["CRM", "Sales Cloud"], url: "#" },
+            { title: "自动化脚本", sub: "Automation", desc: "基于 Selenium 的端到端自动化方案，显著提升回归测试效率。", tags: ["Python", "Selenium"], url: "https://github.com/jcc371620/Automation-Projects" },
+            { title: "Power BI 作品集", sub: "BI", desc: "针对快消行业销量的多维数据看板。", tags: ["DAX", "SQL"], url: "#" },
+            { title: "Tableau 交互式看板", sub: "Data Visualization", desc: "深度挖掘业务数据，构建实时监控仪表板。", tags: ["Visual Analytics", "Tableau"], url: "#" },
+            { title: "draw.io 架构建模", sub: "Workflow", desc: "利用开源工具构建高标准业务流图。", tags: ["Workflow", "Architecture"], url: "#" },
+            { title: "Figma 作品集", sub: "Design", desc: "遵循 Ant Design 规范的 B 端系统设计。", tags: ["UI/UX", "Ant Design"], url: "#" },
+            { title: "Axure 作品集", sub: "Prototyping", desc: "高保真业务系统原型，涵盖复杂逻辑交互。", tags: ["Prototyping", "Logic"], url: "#" },
+            { title: "Visio 业务流程建模", sub: "BPM", desc: "基于 BPMN 2.0 标准的跨部门协作流程图。", tags: ["BPMN 2.0", "Visio"], url: "#" },
+            { title: "Xmind 逻辑看板", sub: "Logic Mapping", desc: "通过思维导图进行深度业务解构。", tags: ["Logic Mapping"], url: "./Assets/B2B.pdf" }
+        ];
+
+        document.getElementById('project-list').innerHTML = projects.map(p => `
+            <a href="${p.url}" class="project-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
+                <h4>${p.title} <small>(${p.sub})</small></h4>
+                <p>${p.desc}</p>
+                <div class="tag-container">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            </a>
+        `).join('');
+
+        const navLinks = [
+            { name: "Home", url: "index.html" },
+            { name: "GitHub", url: "https://github.com/jcc371620", target: "_blank" },
+            { name: "Email", url: "mailto:jcc371620@gmail.com" },
+            { name: "Phone", url: "tel:+8617701690962" }
+        ];
+        document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
+    </script>
 </body>
 </html>
