@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessy Chen | Time Machine Space</title>
+    <title>Jessy Chen | BA & QA Portfolio</title>
     <style>
         :root {
-            --dora-blue: #00a0e9;   /* 经典蓝 */
-            --dora-red: #e53935;    /* 丝带红 */
+            --dora-blue: #00a0e9;   /* 哆啦A梦经典蓝 */
+            --dora-red: #e53935;    /* 标志性红项圈色 */
             --dora-yellow: #ffca28; /* 铃铛金 */
-            --bg-silver: #f8f9fa;   /* 极浅灰底，增加高级感 */
-            --text-dark: #2c3e50;
+            --bg-silver: #f8f9fa;   /* 极细微的铝灰色背景 */
+            --text-dark: #2c3e50;   /* 深邃的专业灰 */
+            --text-gray: #95a5a6;
         }
         
         body { 
             background: var(--bg-silver); 
             color: var(--text-dark); 
-            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; 
+            font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; 
             line-height: 1.6; 
-            padding: 60px 24px; 
-            max-width: 800px; 
+            padding: 80px 24px; 
+            max-width: 850px; 
             margin: 0 auto; 
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 顶部极其简约的导航 */
+        /* 极简导航栏 */
         nav { margin-bottom: 80px; display: flex; gap: 40px; }
         nav a { 
             text-decoration: none; 
             font-size: 14px; 
-            color: #95a5a6; 
+            color: var(--text-gray); 
             font-weight: 500; 
             transition: 0.3s;
             position: relative;
@@ -38,72 +40,72 @@
             content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: var(--dora-blue);
         }
 
-        /* 英雄区：名字下方那条“红领巾”是灵魂 */
+        /* 英雄区：名字与标志性的红领巾设计 */
         .hero { margin-bottom: 100px; }
-        h1 { 
-            font-size: 42px; 
-            font-weight: 700; 
-            margin: 0; 
-            letter-spacing: -1px; 
-        }
+        h1 { font-size: 42px; font-weight: 700; margin: 0; letter-spacing: -1px; }
+        
         .red-collar { 
-            width: 80px; 
-            height: 4px; 
-            background: var(--dora-red); 
-            margin: 15px 0 25px 0; 
-            border-radius: 2px;
-            position: relative;
+            width: 80px; height: 4px; background: var(--dora-red); 
+            margin: 15px 0 25px 0; border-radius: 2px; position: relative;
         }
-        /* 铃铛点缀：微小的金色圆点 */
+        /* 铃铛元素点缀 */
         .red-collar::after {
             content: ''; position: absolute; right: -15px; top: -3px; width: 10px; height: 10px; 
-            background: var(--dora-yellow); border-radius: 50%; box-shadow: 0 0 5px rgba(255,202,40,0.5);
+            background: var(--dora-yellow); border-radius: 50%; box-shadow: 0 0 8px rgba(255,202,40,0.6);
         }
-        .hero-desc { font-size: 17px; color: #7f8c8d; max-width: 500px; }
+        .hero-desc { font-size: 17px; color: var(--text-gray); max-width: 600px; }
 
-        /* 卡片设计：去掉粗边框，改为极细的蓝色侧边或线条 */
-        .section-title { font-size: 20px; font-weight: 600; margin-bottom: 30px; color: var(--dora-blue); }
+        /* 模块标题 */
+        .section-title { 
+            font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
+            color: var(--dora-blue); margin-bottom: 32px; font-weight: 700;
+        }
         
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        /* 响应式网格布局 */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
+        /* 百宝袋风格卡片 */
         .pocket-card {
             background: #ffffff;
-            padding: 30px;
+            padding: 32px;
             border-radius: 12px;
-            border: 1px solid rgba(0, 160, 233, 0.1);
+            border: 1px solid rgba(0, 160, 233, 0.08);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             text-decoration: none;
             color: inherit;
             display: block;
             position: relative;
-            overflow: hidden;
-        }
-        /* 悬停效果：左侧出现蓝色竖条 */
-        .pocket-card::before {
-            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 0; 
-            background: var(--dora-blue); transition: 0.3s;
         }
         .pocket-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transform: translateY(-6px); 
+            box-shadow: 0 12px 30px rgba(0, 160, 233, 0.06); 
+            border-color: var(--dora-blue);
         }
-        .pocket-card:hover::before { width: 4px; }
-
-        .pocket-card h4 { margin: 0 0 10px 0; font-size: 18px; color: var(--text-dark); }
-        .pocket-card p { margin: 0; font-size: 14px; color: #95a5a6; line-height: 1.6; }
         
-        .tags { margin-top: 15px; }
+        .pocket-card .sub-tag { 
+            font-size: 11px; color: var(--text-gray); font-weight: 700; 
+            margin-bottom: 8px; display: block; letter-spacing: 1px;
+        }
+        .pocket-card h4 { margin: 0 0 12px 0; font-size: 19px; color: var(--text-dark); }
+        .pocket-card p { margin: 0; font-size: 14px; color: var(--text-gray); line-height: 1.7; }
+        
+        /* 标签组 */
+        .tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { 
-            font-size: 11px; color: var(--dora-blue); background: rgba(0,160,233,0.05); 
-            padding: 2px 8px; border-radius: 4px; margin-right: 5px; font-weight: 600;
+            font-size: 10px; color: var(--dora-blue); background: rgba(0,160,233,0.05); 
+            padding: 3px 10px; border-radius: 4px; font-weight: 600; border: 1px solid rgba(0,160,233,0.1);
         }
 
+        /* 页脚 */
         .footer { 
-            margin-top: 120px; padding-top: 30px; border-top: 1px solid #eee; 
-            font-size: 12px; color: #bdc3c7; display: flex; justify-content: space-between; 
+            margin-top: 120px; padding: 40px 0; border-top: 1px solid #eee; 
+            font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; 
         }
 
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        @media (max-width: 700px) { 
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 32px; }
+        }
     </style>
 </head>
 <body>
@@ -113,44 +115,82 @@
     <header class="hero">
         <h1>陈诗洁 Jessy Chen</h1>
         <div class="red-collar"></div>
-        <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>专注于构建如“时光机”般可靠的自动化方案与业务逻辑。</p>
+        <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环。</p>
     </header>
 
-    <section style="margin-bottom: 80px;">
-        <h2 class="section-title">核心领域 / Core Domains</h2>
-        <div class="grid">
-            <div class="pocket-card">
-                <h4>自动化测试</h4>
-                <p>利用 Playwright 等百宝袋工具，确保业务逻辑在持续集成中稳如泰山。</p>
-            </div>
-            <div class="pocket-card">
-                <h4>业务需求分析</h4>
-                <p>穿透复杂的原始需求，交付最直接有效的解决方案。</p>
-            </div>
-        </div>
-    </section>
-
     <section>
-        <h2 class="section-title">精选项目 / Projects</h2>
+        <h2 class="section-title">Professional Pocket / 专业百宝袋</h2>
         <div id="project-list" class="grid"></div>
     </section>
 
     <footer class="footer">
-        <div>© 2026 Jessy Chen. Dora-Inspired Minimalism.</div>
-        <div>叮当~ 未来已来</div>
+        <div>© 2026 Jessy Chen. Built with Dora-Minimalism Spirit.</div>
+        <div style="color: var(--dora-red); font-weight: bold;">叮当~ 未来已来</div>
     </footer>
 
     <script>
         const projects = [
-            { title: "Salesforce CRM 系统管理", sub: "BA", desc: "优化客户全生命周期逻辑，实现数据流的“任意门”式无缝集成。", tags: ["Salesforce", "SOQL"], url: "#" },
-            { title: "自动化测试工程", sub: "QA", desc: "构建高效回归框架，让 Bug 无处遁形。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects" },
-            { title: "数据可视化看板", sub: "BI", desc: "将晦涩的数字转化为直观的业务洞察。", tags: ["Power BI", "SQL"], url: "#" },
-            { title: "业务流程架构设计", sub: "Workflow", desc: "通过科学建模消除流程中的冗余时间。", tags: ["BPMN", "Visio"], url: "#" }
+            { 
+                title: "自动化测试工程", 
+                sub: "QA", 
+                desc: "基于 Pytest 与 Playwright 封装 Page Object 模型，实现高复用性端到端回归测试，确保复杂业务逻辑在持续集成中的稳定性。", 
+                tags: ["Python", "Pytest", "Playwright"], 
+                url: "https://github.com/jcc371620/Automation-Projects" 
+            },
+            { 
+                title: "接口自动化与性能", 
+                sub: "Perf", 
+                desc: "利用 Requests 库构建接口测试组件，覆盖 API 核心路径校验；通过性能压测评估响应阈值，在后端链路预判逻辑风险。", 
+                tags: ["Requests", "Postman", "JMeter"], 
+                url: "#" 
+            },
+            { 
+                title: "DevOps 流水线建设", 
+                sub: "CI/CD", 
+                desc: "配置 GitHub Actions 自动化工作流，集成静态代码扫描与自动测试触发，优化部署反馈周期，打造透明化的质量流水线。", 
+                tags: ["GitHub Actions", "Docker", "Azure"], 
+                url: "#" 
+            },
+            { 
+                title: "数据分析与可视化", 
+                sub: "BI", 
+                desc: "通过 SQL 进行多表关联挖掘，利用 Power BI 构建销售 KPI 动态监控看板，将底层明细转化为支撑业务决策的直观洞察。", 
+                tags: ["SQL", "Power BI", "Tableau"], 
+                url: "#" 
+            },
+            { 
+                title: "Salesforce 系统管理", 
+                sub: "CRM", 
+                desc: "主导 Sales & Marketing Cloud 的配置优化，利用 SOQL 进行跨对象数据提取，实现 Consumer Cloud 环境下 O2O 渠道全生命周期数据整合。", 
+                tags: ["Sales Cloud", "Marketing Cloud", "Consumer Cloud", "SOQL"], 
+                url: "#" 
+            },
+            { 
+                title: "业务流程架构设计", 
+                sub: "Workflow", 
+                desc: "运用 BPMN 2.0 标准梳理跨部门协作链路，输出高标准化流程图与需求规格文档，消除业务传递中的逻辑冗余与理解偏差。", 
+                tags: ["Visio", "Xmind", "BPMN 2.0"], 
+                url: "#" 
+            },
+            { 
+                title: "交互设计与原型工程", 
+                sub: "UX/UI", 
+                desc: "遵循 Ant Design 规范，利用 Figma 产出高保真交互原型，通过原型走通复杂业务用例，大幅降低前后端开发的沟通成本。", 
+                tags: ["Figma", "Axure", "Sketch"], 
+                url: "#" 
+            },
+            { 
+                title: "质量工程策略咨询", 
+                sub: "Strategy", 
+                desc: "基于敏捷开发模式制定分层测试方案，通过风险识别与测试左移策略，在需求阶段介入质量预防，实现项目交付成本的最优化。", 
+                tags: ["Risk Analysis", "Agile", "Consulting"], 
+                url: "#" 
+            }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
             <a href="${p.url}" class="pocket-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
-                <div style="font-size: 11px; color: #bdc3c7; margin-bottom: 5px;">${p.sub}</div>
+                <span class="sub-tag">${p.sub}</span>
                 <h4>${p.title}</h4>
                 <p>${p.desc}</p>
                 <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
@@ -158,10 +198,10 @@
         `).join('');
 
         const navLinks = [
-            { name: "首页", url: "index.html" },
-            { name: "GitHub", url: "https://github.com/jcc371620", target: "_blank" },
-            { name: "领英", url: "#" },
-            { name: "联系我", url: "mailto:jcc371620@gmail.com" }
+            { name: "HOME", url: "index.html" },
+            { name: "GITHUB", url: "https://github.com/jcc371620", target: "_blank" },
+            { name: "LINKEDIN", url: "#" },
+            { name: "CONTACT", url: "mailto:jcc371620@gmail.com" }
         ];
         document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
