@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -60,12 +59,10 @@
             color: var(--text-main-title); 
             transition: color var(--transition-speed); 
             margin: 0;
-            font-weight: 400 !important; /* 标题陈诗洁Jessy，确保不加粗 */
+            font-weight: 400 !important; 
         }
         
-        /* 装饰：红色项圈 */
         .red-collar { width: 120px; height: 6px; background: var(--dora-red); margin: 25px auto; border-radius: 20px; position: relative; }
-        /* 换肤铃铛 */
         .bell {
             position: absolute; right: -20px; top: -10px; width: 26px; height: 26px; 
             background: var(--dora-yellow); border-radius: 50%; 
@@ -76,7 +73,6 @@
 
         .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 800px; margin: 0 auto; font-weight: 400; padding: 0 20px; }
 
-        /* 生活切片区域 */
         .section-header { width: 100%; text-align: center; margin-bottom: 40px; }
         .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 5px; color: var(--dora-blue); opacity: 0.6; font-weight: 400; }
 
@@ -104,7 +100,6 @@
         .hobby-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0, 160, 233, 0.12); color: var(--dora-blue); }
         .hobby-card:hover::after { opacity: 1; transform: translateY(-20px); }
 
-        /* 专业百宝袋：超大圆角设计 */
         .pocket-container {
             background: var(--pocket-bg); backdrop-filter: blur(10px);
             padding: 100px 60px; border-radius: 180px; 
@@ -126,7 +121,6 @@
         .tags { margin-top: auto; padding-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
         .tag { font-size: 11px; color: var(--text-gray); background: rgba(0,0,0,0.02); padding: 4px 16px; border-radius: 30px; }
 
-        /* 音乐播放器控制按钮 */
         #music-control {
             position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
             background: #fff; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -137,10 +131,8 @@
         #music-control.playing { animation: rotateDisc 5s infinite linear; border-color: var(--dora-blue); }
         @keyframes rotateDisc { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 
-        /* 页脚 */
         .footer { margin-top: 120px; padding: 40px 0; width: 100%; border-top: 1px solid rgba(0,0,0,0.05); font-size: 13px; color: var(--text-gray); display: flex; justify-content: space-between; }
 
-        /* 手机端适配 (Mobile Responsiveness) */
         @media (max-width: 900px) {
             .pocket-container { border-radius: 60px; padding: 60px 30px; }
             .pocket-card { border-radius: 50px; padding: 40px; }
@@ -153,19 +145,11 @@
             .hero { margin-bottom: 50px; }
             h1 { font-size: 32px; }
             .hero-desc { font-size: 15px; }
-            
             .hobby-grid { gap: 15px; margin-bottom: 60px; }
             .hobby-card { width: 80px; height: 80px; font-size: 12px; }
-            .hobby-card span { font-size: 20px; }
-            /* 手机端点击后显示气泡 */
-            .hobby-card:active::after { opacity: 1; transform: translateY(-15px); }
-
             .pocket-container { border-radius: 40px; padding: 40px 20px; }
             .pocket-card { padding: 30px 20px; border-radius: 40px; }
-            h4 { font-size: 20px; }
-            
             .footer { flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-top: 60px; }
-            #music-control { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 18px; }
         }
     </style>
 </head>
@@ -211,49 +195,58 @@
     </footer>
 
     <script>
-        // 1. 项目数据
+        // 1. 项目数据 (已添加跳转链接)
         const projects = [
-    { 
-        title: "Salesforce CRM管理系统", 
-        sub: "CRM", 
-        desc: "深度整合多云生态，通过跨云架构优化与 SOQL 精准治理，构建高可靠的客户全生命周期管理模型。", 
-        tags: ["SOQL","Sales Cloud", "Consumer Cloud","Marketing Cloud", "Data Governance"] 
-    },
-    { 
-        title: "全栈自动化质量工程", 
-        sub: "QUALITY ASSURANCE", 
-        desc: "搭建覆盖 Web 与移动端的端到端自动化体系，通过全链路接口监控与脚本治理，确保产品交付的一致性与稳定性。", 
-        tags: ["Pytest", "Automation", "E2E Testing","Playwright","Appium","Postman"] 
-    },
-    { 
-        title: "数据分析与决策可视化", 
-        sub: "DATA INTELLIGENCE", 
-        desc: "打破多维异构数据孤岛，利用敏捷 BI 技术还原业务全链路视图，驱动质量管理从“经验导向”向“数据决策”转型。", 
-        tags: ["Power BI", "SQL", "Tableau", "Decision Making","SAP Analytics Cloud"] 
-    },
-    { 
-        title: "交互体验与 B 端产品原型", 
-        sub: "UX/UI DESIGN", 
-        desc: "基于组件化思维驱动 B 端产品交互演进，通过高保真原型探索复杂业务场景下的极致用户体验与逻辑自洽。", 
-        tags: ["Figma","Axure","Sketch", "User Experience", "Prototyping"] 
-    },
-    { 
-        title: "业务逻辑与流程架构治理", 
-        sub: "BUSINESS ARCHITECTURE", 
-        desc: "深耕复杂业务建模，运用 BPMN 与 UML 标准实现底层逻辑的清晰定义与标准化归档，赋能产研团队高效协同。", 
-        tags: ["BPMN","Xmind","Visio","UML", "Logic Modeling"] 
-    },
-    { 
-        title: "持续交付与 DevOps 演进", 
-        sub: "DEVOPS & INFRA", 
-        desc: "践行 Infrastructure as Code 理念，构建高度自动化的 CI/CD 交付流水线，通过容器化部署实现研发效能的阶梯式提升。", 
-        tags: ["CI/CD", "Docker", "Efficiency","Azure DevOps", "Infrastructure as Code","Jenkins"] 
-    }
-];
+            { 
+                title: "Salesforce CRM管理系统", 
+                sub: "CRM", 
+                link: "#",
+                desc: "深度整合多云生态，通过跨云架构优化与 SOQL 精准治理，构建高可靠的客户全生命周期管理模型。", 
+                tags: ["SOQL","Sales Cloud", "Consumer Cloud","Marketing Cloud", "Data Governance"] 
+            },
+            { 
+                title: "全栈自动化测试框架", 
+                sub: "QUALITY ASSURANCE", 
+                link: "https://github.com/jcc371620/Automation-Projects", // 👈 仓库链接
+                desc: "搭建覆盖 Web 与移动端的端到端自动化体系，通过全链路接口监控与脚本治理，确保产品交付的一致性与稳定性。", 
+                tags: ["Pytest", "Automation", "E2E Testing","Playwright","Appium","Postman"] 
+            },
+            { 
+                title: "数据分析与决策可视化", 
+                sub: "DATA INTELLIGENCE", 
+                link: "#",
+                desc: "打破多维异构数据孤岛，利用敏捷 BI 技术还原业务全链路视图，驱动质量管理从“经验导向”向“数据决策”转型。", 
+                tags: ["Power BI", "SQL", "Tableau", "Decision Making","SAP Analytics Cloud"] 
+            },
+            { 
+                title: "交互体验与 B 端产品原型", 
+                sub: "UX/UI DESIGN", 
+                link: "#",
+                desc: "基于组件化思维驱动 B 端产品交互演进，通过高保真原型探索复杂业务场景下的极致用户体验与逻辑自洽。", 
+                tags: ["Figma","Axure","Sketch", "User Experience", "Prototyping"] 
+            },
+            { 
+                title: "业务逻辑与流程架构治理", 
+                sub: "BUSINESS ARCHITECTURE", 
+                link: "#",
+                desc: "深耕复杂业务建模，运用 BPMN 与 UML 标准实现底层逻辑的清晰定义与标准化归档，赋能产研团队高效协同。", 
+                tags: ["BPMN","Xmind","Visio","UML", "Logic Modeling"] 
+            },
+            { 
+                title: "持续交付与 DevOps 演进", 
+                sub: "DEVOPS & INFRA", 
+                link: "#",
+                desc: "践行 Infrastructure as Code 理念，构建高度自动化的 CI/CD 交付流水线，通过容器化部署实现研发效能的阶梯式提升。", 
+                tags: ["CI/CD", "Docker", "Efficiency","Azure DevOps", "Infrastructure as Code","Jenkins"] 
+            }
+        ];
 
-        // 渲染卡片
+        // 渲染卡片：动态判断是否需要打开新窗口
         document.getElementById('project-list').innerHTML = projects.map((p, index) => `
-            <a href="#" class="pocket-card" style="animation-delay: ${index * 0.1}s">
+            <a href="${p.link}" 
+               class="pocket-card" 
+               target="${p.link !== '#' ? '_blank' : '_self'}" 
+               style="animation-delay: ${index * 0.1}s">
                 <span class="sub-tag">${p.sub}</span>
                 <h4>${p.title}</h4>
                 <p>${p.desc}</p>
@@ -291,7 +284,7 @@
                 musicBtn.innerText = "🎵";
             } else {
                 audio.play().catch(e => {
-                    console.log("音频播放需要用户先与页面产生交互（点击）。");
+                    console.log("音频播放需要用户先与页面产生交互。");
                 });
                 musicBtn.classList.add('playing');
                 musicBtn.innerText = "💿";
