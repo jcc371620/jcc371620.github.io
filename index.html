@@ -12,13 +12,13 @@
             --bg-silver: #f8f9fa;   
             --text-dark: #2c3e50;   
             --text-gray: #95a5a6;
-            --border-light: rgba(0, 160, 233, 0.15);
+            --border-light: rgba(0, 160, 233, 0.1);
         }
         
         /* 任意门入场动画 */
         @keyframes doorOpen {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         body { 
@@ -26,96 +26,127 @@
             color: var(--text-dark); 
             font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; 
             line-height: 1.6; 
-            padding: 80px 24px; 
-            max-width: 850px; 
+            padding: 60px 24px 100px; 
+            max-width: 900px; 
             margin: 0 auto; 
             animation: doorOpen 0.8s ease-out;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 竹蜻蜓：顶部动态线条 */
-        .propeller-line {
+        /* 顶部竹蜻蜓动态线 */
+        .top-propeller {
             position: fixed; top: 0; left: 0; width: 100%; height: 3px;
             background: linear-gradient(90deg, transparent, var(--dora-blue), var(--dora-yellow), var(--dora-blue), transparent);
             background-size: 200% 100%;
-            animation: flying 2s infinite linear;
+            animation: movePropeller 3s infinite linear;
             z-index: 1000;
         }
-        @keyframes flying {
+        @keyframes movePropeller {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
 
-        nav { margin-bottom: 80px; display: flex; gap: 40px; }
-        nav a { text-decoration: none; font-size: 13px; color: var(--text-gray); font-weight: 600; transition: 0.3s; letter-spacing: 1px; }
+        /* 导航 */
+        nav { margin-bottom: 60px; display: flex; gap: 40px; }
+        nav a { text-decoration: none; font-size: 12px; color: var(--text-gray); font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; }
         nav a:hover { color: var(--dora-blue); }
 
+        /* Hero 区域 */
         .hero { margin-bottom: 80px; }
-        h1 { font-size: 42px; font-weight: 700; margin: 0; letter-spacing: 1px; }
+        h1 { font-size: 42px; font-weight: 800; margin: 0; letter-spacing: 1px; color: #1a1a1a; }
         
-        /* 红领巾与会晃动的铃铛 */
         .red-collar { 
-            width: 80px; height: 5px; background: var(--dora-red); 
-            margin: 20px 0 30px 0; border-radius: 3px; position: relative;
+            width: 100px; height: 5px; background: var(--dora-red); 
+            margin: 24px 0; border-radius: 3px; position: relative;
         }
         .bell {
-            position: absolute; right: -12px; top: -4px; width: 12px; height: 12px; 
+            position: absolute; right: -15px; top: -5px; width: 14px; height: 14px; 
             background: var(--dora-yellow); border-radius: 50%; 
-            box-shadow: 0 0 10px rgba(255,202,40,0.5);
-            cursor: pointer;
+            box-shadow: 0 0 12px rgba(255,202,40,0.6);
+            cursor: pointer; transition: transform 0.3s;
         }
-        .bell:hover { animation: ring 0.5s infinite ease-in-out; }
-        @keyframes ring {
+        .bell:hover { animation: ringBell 0.5s infinite; }
+        @keyframes ringBell {
             0%, 100% { transform: rotate(0); }
             25% { transform: rotate(20deg); }
             75% { transform: rotate(-20deg); }
         }
 
-        .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 650px; line-height: 1.8; }
+        .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 700px; line-height: 1.8; font-weight: 400; }
 
-        .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--dora-blue); margin: 60px 0 10px 0; font-weight: 700; }
-        
-        /* 次元口袋弧线 */
-        .pocket-line {
-            width: 100px; height: 40px; 
-            border: 2px solid var(--border-light); border-top: 0;
-            border-radius: 0 0 50px 50px; margin-bottom: 40px;
+        /* Section 通用样式 */
+        .section-title { 
+            font-size: 12px; text-transform: uppercase; letter-spacing: 3px; 
+            color: var(--dora-blue); margin-bottom: 30px; font-weight: 800; 
         }
 
-        .hobby-grid { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+        /* 生活切片 */
+        .hobby-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 100px; }
         .hobby-card {
-            background: #fff; padding: 14px 22px; border-radius: 20px;
-            display: flex; align-items: center; gap: 10px; font-size: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: 0.3s;
+            background: #fff; padding: 12px 20px; border-radius: 30px;
+            display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.03);
+            transition: 0.3s;
         }
         .hobby-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,160,233,0.1); }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .pocket-card {
-            background: #ffffff; padding: 30px; border-radius: 24px;
-            border: 1px solid var(--border-light); transition: 0.4s;
-            text-decoration: none; color: inherit; display: block;
+        /* 优化后的“百宝袋”容器：不再压文字，而是承托内容 */
+        .pocket-container {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px 20px 150px 150px; /* 底部形成巨大的口袋弧线 */
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 40px rgba(0, 160, 233, 0.03);
+            position: relative;
         }
-        .pocket-card:hover { transform: translateY(-5px); border-color: var(--dora-blue); box-shadow: 0 10px 25px rgba(0,160,233,0.08); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         
-        .sub-tag { font-size: 11px; color: var(--text-gray); font-weight: 700; margin-bottom: 8px; display: block; }
-        .tag { font-size: 11px; color: var(--dora-blue); background: rgba(0,160,233,0.05); padding: 3px 10px; border-radius: 6px; font-weight: 600; margin-right: 5px; }
+        .pocket-card {
+            text-decoration: none; color: inherit; display: block;
+            padding: 20px; border-radius: 16px; transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .pocket-card:hover { 
+            background: var(--bg-silver);
+            border-color: var(--border-light);
+        }
+        
+        .sub-tag { font-size: 10px; color: var(--dora-blue); font-weight: 800; margin-bottom: 8px; display: block; letter-spacing: 1px; }
+        h4 { margin: 0 0 10px 0; font-size: 18px; font-weight: 700; }
+        .pocket-card p { margin: 0; font-size: 14px; color: var(--text-gray); line-height: 1.6; }
+        
+        .tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { 
+            font-size: 11px; color: var(--text-gray); background: #f0f2f5; 
+            padding: 2px 8px; border-radius: 4px; font-weight: 600; 
+        }
+        .pocket-card:hover .tag { background: white; color: var(--dora-blue); }
 
-        .footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid #eee; font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; }
+        .footer { 
+            margin-top: 120px; padding: 40px 0; border-top: 1px solid #eee; 
+            font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; 
+        }
 
-        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .grid { grid-template-columns: 1fr; }
+            .pocket-container { border-radius: 20px 20px 80px 80px; padding: 40px 20px; }
+            h1 { font-size: 32px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="propeller-line"></div>
+    <div class="top-propeller"></div>
 
     <nav id="main-nav"></nav>
 
     <header class="hero">
         <h1>陈诗洁 | Jessy Chen</h1>
-        <div class="red-collar"><div class="bell"></div></div>
-        <p class="hero-desc">竹蜻蜓执照 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环，一起让梦想起飞吧！</p>
+        <div class="red-collar">
+            <div class="bell" title="叮当~"></div>
+        </div>
+        <p class="hero-desc">梦想制造者 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环。</p>
     </header>
 
     <section>
@@ -128,27 +159,26 @@
         </div>
     </section>
 
-    <section>
+    <section class="pocket-container">
         <h2 class="section-title">Professional Pocket / 专业百宝袋</h2>
-        <div class="pocket-line"></div>
         <div id="project-list" class="grid"></div>
     </section>
 
     <footer class="footer">
         <div>© 2026 Jessy Chen. Built with Dora-Minimalism Spirit.</div>
-        <div style="color: var(--dora-red); font-weight: bold;">叮当~ 未来已来</div>
+        <div style="color: var(--dora-red); font-weight: bold;">未来已来</div>
     </footer>
 
     <script>
         const projects = [
-            { title: "自动化测试工程", sub: "QA", desc: "基于 Pytest 与 Playwright 封装 POM 模型。", tags: ["Python", "Playwright"], url: "#" },
-            { title: "接口自动化与性能", sub: "Perf", desc: "Requests 库构建接口测试组件。", tags: ["Requests", "JMeter"], url: "#" },
-            { title: "DevOps 流水线建设", sub: "CI/CD", desc: "GitHub Actions 自动化工作流。", tags: ["CI/CD", "Docker"], url: "#" },
-            { title: "数据分析与可视化", sub: "BI", desc: "SQL 挖掘与 Power BI 监控看板。", tags: ["SQL", "Power BI"], url: "#" },
-            { title: "Salesforce 系统管理", sub: "CRM", desc: "SOQL 跨对象数据提取与配置优化。", tags: ["CRM", "SOQL"], url: "#" },
-            { title: "业务流程架构设计", sub: "Workflow", desc: "BPMN 2.0 标准梳理协作链路。", tags: ["Visio", "BPMN"], url: "#" },
-            { title: "交互设计与原型工程", sub: "UX/UI", desc: "Figma 产出高保真交互原型。", tags: ["Figma", "Axure"], url: "#" },
-            { title: "质量工程策略咨询", sub: "Strategy", desc: "敏捷开发下的分层测试方案。", tags: ["Agile", "Risk"], url: "#" }
+            { title: "自动化测试工程", sub: "QUALITY ASSURANCE", desc: "基于 Pytest 与 Playwright 封装 Page Object 模型，实现高复用性端到端回归测试。", tags: ["Python", "Playwright"], url: "#" },
+            { title: "接口自动化与性能", sub: "PERFORMANCE", desc: "利用 Requests 库构建接口测试组件，覆盖核心 API 路径校验并评估响应阈值。", tags: ["Requests", "JMeter"], url: "#" },
+            { title: "DevOps 流水线建设", sub: "CI/CD", desc: "配置 GitHub Actions 工作流，集成静态代码扫描与自动测试触发。", tags: ["GitHub Actions", "Docker"], url: "#" },
+            { title: "数据分析与可视化", sub: "BUSINESS INTEL", desc: "通过 SQL 挖掘多表关联数据，利用 Power BI 构建销售 KPI 监控看板。", tags: ["SQL", "Power BI"], url: "#" },
+            { title: "Salesforce 系统管理", sub: "CRM SYSTEM", desc: "主导 Sales Cloud 配置优化，利用 SOQL 实现跨对象数据全生命周期整合。", tags: ["Salesforce", "SOQL"], url: "#" },
+            { title: "业务流程架构设计", sub: "WORKFLOW", desc: "运用 BPMN 2.0 标准梳理跨部门协作链路，消除业务传递中的逻辑冗余。", tags: ["BPMN 2.0", "Xmind"], url: "#" },
+            { title: "交互设计与原型工程", sub: "UX/UI DESIGN", desc: "遵循 Ant Design 规范产出高保真原型，降低前后端开发的沟通成本。", tags: ["Figma", "Axure"], url: "#" },
+            { title: "质量工程策略咨询", sub: "STRATEGY", desc: "制定分层测试方案，通过风险识别与测试左移策略优化项目交付成本。", tags: ["Agile", "Consulting"], url: "#" }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
@@ -156,16 +186,16 @@
                 <span class="sub-tag">${p.sub}</span>
                 <h4>${p.title}</h4>
                 <p>${p.desc}</p>
-                <div style="margin-top:15px;">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
             </a>
         `).join('');
 
         const navLinks = [
             { name: "HOME", url: "#" },
-            { name: "GITHUB", url: "https://github.com/jcc371620" },
+            { name: "GITHUB", url: "https://github.com/jcc371620", target: "_blank" },
             { name: "CONTACT", url: "mailto:your-email@example.com" } 
         ];
-        document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}">${n.name}</a>`).join('');
+        document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
 </body>
 </html>
