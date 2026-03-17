@@ -3,149 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessy Chen | Portfolio</title>
+    <title>Jessy Chen | Professional Space</title>
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <style>
+        /* 定义可变变量，初始为你的经典深灰/哆啦蓝风格 */
         :root {
             --dora-blue: #00a0e9;   
             --dora-red: #e53935;    
             --dora-yellow: #ffca28; 
-            --bg-silver: #fdfdfd;   
+            --bg-color: #f8f9fa;   
             --text-main-title: #546e7a; 
             --text-dark: #607d8b;       
-            --text-gray: #90a4ae;
+            --text-gray: #b0bec5;
+            --pocket-bg: rgba(255, 255, 255, 0.4);
+            --card-bg: #ffffff;
+            --transition-speed: 0.6s; /* 全局平滑过渡时间 */
         }
         
-        @keyframes doorOpen {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         body { 
-            background: var(--bg-silver); 
+            background: var(--bg-color); 
             color: var(--text-dark); 
             font-family: 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif; 
-            line-height: 1.6; 
-            padding: 60px 24px 120px; 
-            max-width: 950px; 
+            line-height: 1.7; 
+            padding: 40px 24px 100px; 
+            max-width: 1100px; 
             margin: 0 auto; 
-            animation: doorOpen 0.8s ease-out;
             display: flex;
             flex-direction: column;
             align-items: center; 
+            transition: background var(--transition-speed);
             -webkit-font-smoothing: antialiased;
             font-weight: normal !important;
         }
 
+        /* 顶部装饰线 */
         .top-propeller {
-            position: fixed; top: 0; left: 0; width: 100%; height: 5px;
-            background: linear-gradient(90deg, transparent, var(--dora-blue), var(--dora-yellow), var(--dora-blue), transparent);
-            background-size: 200% 100%;
-            animation: movePropeller 3s infinite linear;
-            z-index: 1000;
+            position: fixed; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--dora-blue), var(--dora-yellow), var(--dora-red), var(--dora-blue));
+            background-size: 300% 100%;
+            animation: movePropeller 5s infinite linear;
+            z-index: 2000;
+        }
+        @keyframes movePropeller {
+            0% { background-position: 0% 0; }
+            100% { background-position: 100% 0; }
         }
 
-        nav { margin-bottom: 60px; display: flex; gap: 40px; justify-content: center; }
-        nav a { text-decoration: none; font-size: 15px; color: var(--text-gray); transition: 0.3s; font-weight: normal; }
-        nav a:hover { color: var(--dora-blue); transform: scale(1.05); }
+        nav { margin-bottom: 60px; display: flex; gap: 45px; }
+        nav a { text-decoration: none; font-size: 13px; color: var(--text-gray); transition: 0.3s; letter-spacing: 2px; }
+        nav a:hover { color: var(--dora-blue); }
 
-        .hero { margin-bottom: 80px; text-align: center; }
-        h1 { font-size: 58px; font-weight: 400; margin: 0; letter-spacing: 2px; color: var(--text-main-title); }
+        .hero { margin-bottom: 90px; text-align: center; animation: fadeIn 0.8s ease-out; }
+        h1 { 
+            font-size: clamp(32px, 6vw, 62px); font-weight: 400; margin: 0; letter-spacing: 1px; 
+            color: var(--text-main-title); transition: color var(--transition-speed); 
+        }
         
         .red-collar { 
-            width: 140px; height: 8px; background: var(--dora-red); 
-            margin: 28px auto; border-radius: 10px; position: relative;
+            width: 120px; height: 6px; background: var(--dora-red); 
+            margin: 25px auto; border-radius: 20px; position: relative;
         }
         .bell {
-            position: absolute; right: -22px; top: -8px; width: 24px; height: 24px; 
+            position: absolute; right: -20px; top: -10px; width: 26px; height: 26px; 
             background: var(--dora-yellow); border-radius: 50%; 
-            box-shadow: 0 4px 10px rgba(255,202,40,0.2);
-            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,202,40,0.3);
+            cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
         }
-        .bell:hover { animation: ring 0.5s infinite; }
-        @keyframes ring {
-            0%, 100% { transform: rotate(0); }
-            25% { transform: rotate(20deg); }
-            75% { transform: rotate(-20deg); }
-        }
-        .hero-desc { font-size: 20px; color: var(--text-gray); max-width: 750px; margin: 0 auto; font-weight: normal; }
+        .bell:hover { transform: scale(1.2) rotate(15deg); }
+        .bell:active { transform: scale(0.9) rotate(-20deg); }
+        
+        .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 800px; margin: 0 auto; transition: color var(--transition-speed); }
 
+        .section-header { width: 100%; text-align: center; margin-bottom: 40px; }
         .section-title { 
-            font-size: 16px; text-transform: uppercase; letter-spacing: 4px; 
-            color: var(--dora-blue); margin-bottom: 35px; display: block;
-            text-align: center; font-weight: normal;
+            font-size: 13px; text-transform: uppercase; letter-spacing: 5px; 
+            color: var(--dora-blue); font-weight: normal; opacity: 0.6;
+            transition: color var(--transition-speed);
         }
 
-        .hobby-grid { 
-            display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; 
-            margin-bottom: 110px; width: 100%;
-        }
+        .hobby-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-bottom: 120px; }
         .hobby-card {
-            background: #fff; 
+            background: var(--card-bg); 
             width: 100px; height: 100px; 
             border-radius: 50%; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            gap: 5px; font-size: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: 0.4s;
-            border: 1px solid #eceff1;
-            font-weight: normal;
-            color: var(--text-dark);
+            font-size: 14px; color: var(--text-dark);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.03); 
+            transition: all 0.4s;
+            border: 1px solid rgba(236, 239, 241, 0.5);
         }
-        .hobby-card span { font-size: 24px; }
-        .hobby-card:hover { transform: scale(1.1); border-color: var(--dora-blue); color: var(--dora-blue); }
+        .hobby-card span { font-size: 26px; margin-bottom: 4px; }
+        .hobby-card:hover { transform: translateY(-8px); border-color: var(--dora-blue); color: var(--dora-blue); box-shadow: 0 15px 30px rgba(0, 160, 233, 0.1); }
 
-        /* --- 百宝袋容器 --- */
         .pocket-container {
-            background: rgba(0, 160, 233, 0.03); 
-            padding: 100px 60px 160px; /* 增加内边距，确保内部圆角卡片不紧贴边缘 */
+            background: var(--pocket-bg); 
+            backdrop-filter: blur(5px);
+            padding: 100px 60px; 
             border-radius: 180px; 
-            border: 2px dashed rgba(0, 160, 233, 0.12); 
+            border: 2px dashed rgba(0, 160, 233, 0.08); 
             width: 100%;
             box-sizing: border-box;
-            position: relative;
+            transition: all var(--transition-speed);
         }
 
-        .grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 32px; 
-            text-align: left; 
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 35px; }
         
-        /* --- 卡片弧度同步调整为超大圆角 --- */
         .pocket-card {
-            background: #ffffff; 
-            padding: 45px 50px; /* 增加内边距，让文字在圆角内有更多呼吸空间 */
-            border-radius: 80px; /* 同步百宝袋的大圆角风格 */
-            transition: 0.3s ease;
+            background: var(--card-bg); 
+            padding: 50px 60px; 
+            border-radius: 80px; 
+            transition: all 0.4s ease, background var(--transition-speed);
             text-decoration: none; color: inherit;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.01);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.01);
             border: 1.5px solid transparent;
+            display: flex; flex-direction: column;
+            animation: fadeIn 1s ease-out;
         }
         .pocket-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 160, 233, 0.1);
-            border-color: var(--dora-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 160, 233, 0.1);
+            border-color: rgba(0, 160, 233, 0.2);
         }
         
-        .sub-tag { font-size: 11px; color: var(--dora-blue); font-weight: normal; margin-bottom: 8px; display: block; opacity: 0.8; letter-spacing: 1px; }
-        h4 { margin: 0 0 10px 0; font-size: 24px; color: var(--text-main-title); letter-spacing: 0.5px; font-weight: normal; }
-        .pocket-card p { margin: 0; font-size: 15px; color: var(--text-dark); line-height: 1.7; font-weight: normal; }
+        .sub-tag { font-size: 10px; color: var(--dora-blue); margin-bottom: 12px; display: block; letter-spacing: 3px; opacity: 0.7; }
+        h4 { margin: 0 0 15px 0; font-size: 26px; color: var(--text-main-title); font-weight: normal; transition: color var(--transition-speed); }
+        .pocket-card p { margin: 0; font-size: 15px; color: var(--text-dark); line-height: 1.8; text-align: justify; }
         
-        .tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { font-size: 11px; color: var(--text-gray); background: #f5f7f8; padding: 4px 14px; border-radius: 20px; font-weight: normal; } /* tag也微调为圆润风格 */
+        .tags { margin-top: auto; padding-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { font-size: 11px; color: var(--text-gray); background: rgba(0,0,0,0.02); padding: 4px 16px; border-radius: 30px; border: 1px solid transparent; transition: 0.3s; }
+        .pocket-card:hover .tag { color: var(--dora-blue); border-color: rgba(0,160,233,0.1); background: var(--card-bg); }
 
         .footer { 
-            margin-top: 100px; padding: 40px 0; width: 100%;
-            border-top: 2px dashed #eceff1; font-size: 15px; color: var(--text-gray); 
+            margin-top: 120px; padding: 40px 0; width: 100%;
+            border-top: 1px solid rgba(0,0,0,0.05); font-size: 13px; color: var(--text-gray); 
             display: flex; justify-content: space-between; 
         }
 
-        @media (max-width: 768px) { 
+        @media (max-width: 900px) { 
+            .pocket-container { border-radius: 60px; padding: 60px 30px; }
+            .pocket-card { border-radius: 50px; padding: 40px; }
             .grid { grid-template-columns: 1fr; }
-            .pocket-container { border-radius: 60px; padding: 60px 20px 100px; }
-            .pocket-card { border-radius: 40px; padding: 35px; }
-            h1 { font-size: 42px; }
         }
     </style>
 </head>
@@ -153,82 +156,54 @@
 
     <div class="top-propeller"></div>
 
-    <nav id="main-nav"></nav>
+    <nav>
+        <a href="#">HOME</a>
+        <a href="https://github.com/jcc371620" target="_blank">GITHUB</a>
+        <a href="mailto:your-email@example.com">CONTACT</a>
+    </nav>
 
     <header class="hero">
-        <h1>陈诗洁 | JESSY CHEN</h1>
-        <div class="red-collar"><div class="bell"></div></div>
-        <p class="hero-desc">Quality Assurance Engineer & Business Analyst <br>专注于 Salesforce 生态治理、自动化质量工程及业务全链路逻辑优化。</p>
+        <h1 id="main-name">陈诗洁 Jessy</h1>
+        <div class="red-collar">
+            <div class="bell" id="color-bell" title="点击换肤 ✨"></div>
+        </div>
+        <p class="hero-desc">QA | BA | Salesforce | 软件测试技术百宝箱，一起让梦想起飞吧!。</p>
     </header>
 
-    <section style="width: 100%;">
+    <div class="section-header">
         <span class="section-title">Life Slice / 生活切片</span>
-        <div class="hobby-grid">
-            <div class="hobby-card"><span>🏸</span>羽毛球</div>
-            <div class="hobby-card"><span>📷</span>摄影</div>
-            <div class="hobby-card"><span>📚</span>漫画</div>
-            <div class="hobby-card"><span>🛸</span>梦想家</div>
-        </div>
-    </section>
+    </div>
+    <div class="hobby-grid">
+        <div class="hobby-card"><span>🏸</span>羽毛球</div>
+        <div class="hobby-card"><span>📷</span>摄影</div>
+        <div class="hobby-card"><span>📚</span>漫画</div>
+        <div class="hobby-card"><span>🛸</span>梦想家</div>
+    </div>
 
     <section class="pocket-container">
-        <span class="section-title">Professional Pocket / 专业百宝袋</span>
+        <div class="section-header">
+            <span class="section-title">Professional Pocket / 专业百宝袋</span>
+        </div>
         <div id="project-list" class="grid"></div>
     </section>
 
     <footer class="footer">
-        <div>© 2026 JESSY CHEN.</div>
-        <div style="color: var(--dora-red); font-weight: normal;">叮当~ 🔔 梦想成真 ✨</div>
+        <div>© 2026 JESSY CHEN · Built with Curiosity</div>
+        <div style="color: var(--dora-red);">Everything is possible ✨</div>
     </footer>
 
     <script>
         const projects = [
-            { 
-                title: "Salesforce CRM管理系统", 
-                sub: "CRM", 
-                desc: "深度参与 Salesforce 生态治理，优化跨对象数据交互逻辑，确保多云环境下的业务数据流转一致性。", 
-                tags: ["Sales Cloud", "Marketing Cloud", "Consumer Cloud", "SOQL"], 
-                url: "#" 
-            },
-            { 
-                title: "自动化测试工程", 
-                sub: "AUTOMATION", 
-                desc: "构建基于 Python 的全链路自动化体系，涵盖 UI 交互测试与后端接口校验，显著提升回归效率。", 
-                tags: ["Python", "Playwright", "Postman", "Requests"], 
-                url: "#" 
-            },
-            { 
-                title: "数据分析与可视化", 
-                sub: "ANALYTICS", 
-                desc: "通过 SQL/SOQL 深度清洗原始数据，构建业务核心 KPI 看板，实现从数据埋点到质量决策的闭环。", 
-                tags: ["Python", "SQL", "Power BI", "Tableau"], 
-                url: "#" 
-            },
-            { 
-                title: "交互设计与原型工程", 
-                sub: "UX/UI", 
-                desc: "产出高保真业务系统原型，确保复杂 B 端产品的交互逻辑严密，降低产研沟通损耗。", 
-                tags: ["Figma", "Ant Design", "Axure", "Prototype"], 
-                url: "#" 
-            },
-            { 
-                title: "业务流程架构设计", 
-                sub: "ARCHITECTURE", 
-                desc: "运用标准建模语言梳理业务全链路，识别瓶颈节点并输出逻辑严密的技术规格说明书。", 
-                tags: ["BPMN", "UML", "Flowchart", "Business Analysis"], 
-                url: "#" 
-            },
-            { 
-                title: "DevOps 流水线建设", 
-                sub: "DEVOPS", 
-                desc: "配置持续集成工作流，将自动化冒烟测试集成至 CI 环节，实现质量左移与版本快速交付。", 
-                tags: ["GitHub Actions", "Docker", "CI/CD", "Git"], 
-                url: "#" 
-            }
+            { title: "Salesforce CRM系统", sub: "CRM", desc: "主导 Sales/Marketing/Consumer Cloud 跨云架构优化，利用 SOQL 实现高效数据治理，构建闭环式业务生态。", tags: ["Sales Cloud", "Marketing Cloud", "Consumer Cloud", "SOQL"] },
+            { title: "自动化测试工程", sub: "AUTOMATION", desc: "基于 Python 开发全栈测试脚本，覆盖 Web 与 App 端逻辑校验，结合 Postman 实现接口级质量保障。", tags: ["Python", "Postman", "App", "Web", "Requests"] },
+            { title: "数据分析可视化", sub: "ANALYTICS", desc: "深挖多源异构数据，通过 Power BI 与 Tableau 还原业务全貌，让数据清洗到 KPI 呈现实现全自动化。", tags: ["SQL", "Python", "Power BI", "Data Analytics"] },
+            { title: "交互与原型工程", sub: "DESIGN", desc: "应用 Figma、Sketch 产出高保真设计方案，确保复杂 B 端系统的交互链路在开发前即达到最优解。", tags: ["Figma", "Sketch", "Axure", "Interaction"] },
+            { title: "业务流程架构设计", sub: "ARCHITECTURE", desc: "通过 Visio 与 Xmind 梳理底层逻辑，输出标准的 BPMN/UML 文档，将抽象业务具象化为执行指令。", tags: ["Visio", "Xmind", "BPMN", "UML"] },
+            { title: "DevOps 流水线建设", sub: "DEVOPS", desc: "构建 CI/CD 自动化交付链，集成 Docker 容器化方案与 GitHub Actions，实现研发效能的质感提升。", tags: ["GitHub Actions", "Docker", "CI/CD", "Git"] }
         ];
 
-        document.getElementById('project-list').innerHTML = projects.map(p => `
-            <a href="${p.url}" class="pocket-card">
+        document.getElementById('project-list').innerHTML = projects.map((p, index) => `
+            <a href="#" class="pocket-card" style="animation-delay: ${index * 0.1}s">
                 <span class="sub-tag">${p.sub}</span>
                 <h4>${p.title}</h4>
                 <p>${p.desc}</p>
@@ -236,12 +211,34 @@
             </a>
         `).join('');
 
-        const navLinks = [
-            { name: "HOME", url: "#" },
-            { name: "GITHUB", url: "https://github.com/jcc371620", target: "_blank" },
-            { name: "CONTACT", url: "mailto:your-email@example.com" } 
+        // --- 铃铛彩蛋：变色逻辑 ---
+        const themes = [
+            { name: "经典灰", main: "#546e7a", blue: "#00a0e9", bg: "#f8f9fa", pocket: "rgba(255, 255, 255, 0.4)" },
+            { name: "静谧绿", main: "#2d5a27", blue: "#4caf50", bg: "#f1f8e9", pocket: "rgba(255, 255, 255, 0.6)" },
+            { name: "温柔粉", main: "#880e4f", blue: "#ec407a", bg: "#fce4ec", pocket: "rgba(255, 255, 255, 0.5)" },
+            { name: "深海蓝", main: "#1a237e", blue: "#3f51b5", bg: "#e8eaf6", pocket: "rgba(255, 255, 255, 0.4)" }
         ];
-        document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
+        
+        let currentTheme = 0;
+        const bell = document.getElementById('color-bell');
+        const root = document.documentElement;
+
+        bell.onclick = function() {
+            currentTheme = (currentTheme + 1) % themes.length;
+            const theme = themes[currentTheme];
+            
+            // 平滑修改 CSS 变量
+            root.style.setProperty('--text-main-title', theme.main);
+            root.style.setProperty('--dora-blue', theme.blue);
+            root.style.setProperty('--bg-color', theme.bg);
+            root.style.setProperty('--pocket-bg', theme.pocket);
+            
+            // 简单的点击动效
+            this.style.transform = "scale(1.4) rotate(360deg)";
+            setTimeout(() => {
+                this.style.transform = "scale(1) rotate(0deg)";
+            }, 300);
+        };
     </script>
 </body>
 </html>
