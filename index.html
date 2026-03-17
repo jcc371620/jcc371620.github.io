@@ -24,6 +24,7 @@
             max-width: 850px; 
             margin: 0 auto; 
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         /* 极简导航 */
@@ -34,15 +35,21 @@
         }
         nav a:hover { color: var(--dora-blue); }
 
-        /* 英雄区 - 优化后的间距与排版 */
-        .hero { margin-bottom: 80px; }
-        h1 { 
-            font-size: 42px; 
-            font-weight: 700; 
-            margin: 0; 
-            letter-spacing: 1px; /* 增加呼吸感 */
-            word-spacing: 4px;
+        /* 顶部“竹蜻蜓”动态线条 */
+        .top-line {
+            position: fixed; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--dora-blue), transparent);
+            animation: propeller 3s infinite linear;
+            z-index: 1000;
         }
+        @keyframes propeller {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* 英雄区 */
+        .hero { margin-bottom: 80px; }
+        h1 { font-size: 42px; font-weight: 700; margin: 0; letter-spacing: 1px; word-spacing: 4px; }
         .red-collar { 
             width: 80px; height: 4px; background: var(--dora-red); 
             margin: 20px 0 30px 0; border-radius: 2px; position: relative;
@@ -51,101 +58,75 @@
             content: ''; position: absolute; right: -15px; top: -3px; width: 10px; height: 10px; 
             background: var(--dora-yellow); border-radius: 50%; box-shadow: 0 0 8px rgba(255,202,40,0.4);
         }
-        .hero-desc { 
-            font-size: 18px; 
-            color: var(--text-gray); 
-            max-width: 650px; 
-            line-height: 1.8; /* 解决局促感 */
-            letter-spacing: 0.5px;
-        }
+        .hero-desc { font-size: 18px; color: var(--text-gray); max-width: 650px; line-height: 1.8; letter-spacing: 0.5px; }
 
+        /* 标题样式 + “次元口袋”圆弧 */
         .section-title { 
             font-size: 13px; text-transform: uppercase; letter-spacing: 2px; 
             color: var(--dora-blue); margin: 60px 0 24px 0; font-weight: 700;
+            position: relative;
+        }
+        .pocket-curve {
+            width: 120px; height: 60px; border: 1.5px solid var(--border-light);
+            border-top: 0; border-radius: 0 0 60px 60px;
+            margin-top: -15px; margin-bottom: 30px; opacity: 0.5;
         }
 
         /* 爱好展示区 */
         .hobby-grid { display: flex; gap: 16px; flex-wrap: wrap; }
         .hobby-card {
-            background: #fff;
-            padding: 16px 24px;
-            border-radius: 16px;
-            border: 1px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-dark);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            background: #fff; padding: 16px 24px; border-radius: 16px;
+            display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 160, 233, 0.04);
             transition: all 0.3s ease;
         }
         .hobby-card:hover {
-            border-color: var(--dora-blue);
-            transform: rotate(-2deg) scale(1.05);
+            transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 160, 233, 0.1);
         }
-        .hobby-card span { font-size: 20px; }
 
         /* 项目网格 */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-
         .pocket-card {
-            background: #ffffff;
-            padding: 32px;
-            border-radius: 12px;
+            background: #ffffff; padding: 32px; border-radius: 20px; /* 圆角增加，更显亲和力 */
             border: 1px solid var(--border-light);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            text-decoration: none; color: inherit; display: block;
         }
         .pocket-card:hover { 
             transform: translateY(-6px); 
-            box-shadow: 0 12px 30px rgba(0, 160, 233, 0.06); 
+            box-shadow: 0 12px 30px rgba(0, 160, 233, 0.08); 
             border-color: var(--dora-blue);
         }
         
-        .pocket-card .sub-tag { 
-            font-size: 11px; color: var(--text-gray); font-weight: 700; 
-            margin-bottom: 10px; display: block; letter-spacing: 1px;
-        }
+        .pocket-card .sub-tag { font-size: 11px; color: var(--text-gray); font-weight: 700; margin-bottom: 10px; display: block; letter-spacing: 1px; }
         .pocket-card h4 { margin: 0 0 12px 0; font-size: 19px; }
         .pocket-card p { margin: 0; font-size: 14px; color: var(--text-gray); line-height: 1.7; }
         
-        /* 微调后的精细 Tag 样式 */
         .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { 
-            font-size: 11px; 
-            letter-spacing: 0.2px; 
-            color: var(--dora-blue); 
-            background: rgba(0,160,233,0.04); 
-            padding: 3px 9px; 
-            border-radius: 5px; 
-            font-weight: 600; 
-            border: 1px solid rgba(0,160,233,0.08);
+            font-size: 11px; color: var(--dora-blue); background: rgba(0,160,233,0.04); 
+            padding: 3px 9px; border-radius: 5px; font-weight: 600; border: 1px solid rgba(0,160,233,0.08);
         }
 
         .footer { 
             margin-top: 100px; padding: 40px 0; border-top: 1px solid #eee; 
             font-size: 12px; color: var(--text-gray); display: flex; justify-content: space-between; 
-            align-items: center;
         }
 
-        @media (max-width: 700px) { 
-            .grid { grid-template-columns: 1fr; }
-            h1 { font-size: 32px; }
-        }
+        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
     </style>
 </head>
 <body>
+
+    <div class="top-line"></div>
 
     <nav id="main-nav"></nav>
 
     <header class="hero">
         <h1>陈诗洁 | Jessy Chen</h1>
         <div class="red-collar"></div>
-        <p class="hero-desc">梦想制造者 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环。</p>
+        <p class="hero-desc">梦想制造者 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环，一起让梦想起飞吧！</p>
     </header>
 
     <section>
@@ -160,7 +141,7 @@
 
     <section>
         <h2 class="section-title">Professional Pocket / 专业百宝袋</h2>
-        <div id="project-list" class="grid"></div>
+        <div class="pocket-curve"></div> <div id="project-list" class="grid"></div>
     </section>
 
     <footer class="footer">
