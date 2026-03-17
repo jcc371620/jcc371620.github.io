@@ -6,31 +6,68 @@
     <title>Shijie Chen | Personal Space</title>
     <style>
         :root {
-            --bg: #0d1117;
-            --text: #c9d1d9;
-            --gray: #8b949e;
-            --dark-gray: #30363d;
-            --accent: #00ff41; 
-            --accent-dim: rgba(0, 255, 65, 0.1);
-            --border: #21262d;
+            --bg: #ffffff;        /* 纯白背景 */
+            --text: #1a1a1a;      /* 深灰黑色，比纯黑更柔和 */
+            --light-gray: #f5f5f7; /* 浅灰底色（苹果风） */
+            --border: #e5e5e5;    /* 细边框颜色 */
+            --secondary: #6e6e73; /* 辅助文字颜色 */
         }
         
-        body { background: var(--bg); color: var(--text); font-family: "Fira Code", monospace; line-height: 1.6; padding: 60px 20px; max-width: 750px; margin: 0 auto; }
-        nav { margin-bottom: 40px; border-bottom: 1px solid var(--dark-gray); padding-bottom: 20px; }
-        nav a { margin-right: 20px; text-decoration: none; font-size: 0.9rem; color: var(--gray); transition: 0.3s; }
-        nav a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0; color: var(--accent); text-shadow: 0 0 15px var(--accent); }
-        .subtitle { color: var(--gray); margin-bottom: 40px; font-size: 0.8rem; opacity: 0.7; }
-        h3 { margin-top: 40px; border-bottom: 1px solid var(--dark-gray); padding-bottom: 10px; color: var(--accent); }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            line-height: 1.5; 
+            padding: 80px 24px; 
+            max-width: 680px; 
+            margin: 0 auto; 
+            -webkit-font-smoothing: antialiased; /* 字体抗锯齿优化 */
+        }
 
-        .project-card { display: block; padding: 24px; margin-bottom: 20px; border: 1px solid var(--border); background: rgba(13, 17, 23, 0.8); transition: 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
-        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 0 20px var(--accent-dim); }
-        .project-card h4 { margin: 0 0 8px 0; font-size: 1.2rem; }
-        .project-card p { margin: 0; font-size: 0.85rem; color: var(--gray); }
+        /* 导航栏：极简灰 */
+        nav { margin-bottom: 60px; }
+        nav a { margin-right: 24px; text-decoration: none; font-size: 13px; color: var(--secondary); transition: color 0.2s; font-weight: 500; }
+        nav a:hover { color: var(--text); }
+
+        /* 标题：增加字间距，沉稳大气 */
+        h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .subtitle { color: var(--secondary); margin-bottom: 48px; font-size: 14px; font-weight: 400; }
         
-        .tag-container { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { font-size: 10px; color: var(--accent); background: var(--accent-dim); padding: 2px 10px; border: 1px solid var(--accent); text-transform: uppercase; }
-        .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid var(--border); padding-top: 20px; text-align: center; }
+        h3 { margin-top: 64px; margin-bottom: 24px; font-size: 18px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+
+        /* 项目卡片：去掉边框，改用悬停阴影或背景色 */
+        .project-card { 
+            display: block; 
+            padding: 20px 0; 
+            margin-bottom: 8px; 
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            text-decoration: none; 
+            color: inherit; 
+        }
+        
+        .project-card:hover { 
+            padding-left: 8px; /* 轻微位移感 */
+            background: #fafafa;
+        }
+
+        .project-card h4 { margin: 0 0 6px 0; font-size: 16px; font-weight: 600; }
+        .project-card h4 small { color: var(--secondary); font-weight: 400; margin-left: 8px; font-size: 12px; }
+        .project-card p { margin: 0; font-size: 14px; color: var(--secondary); }
+        
+        /* 标签：低调的浅灰色块 */
+        .tag-container { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { 
+            font-size: 10px; 
+            color: var(--secondary); 
+            background: var(--light-gray); 
+            padding: 2px 8px; 
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .footer { margin-top: 100px; font-size: 12px; color: #b0b0b0; text-align: left; }
     </style>
 </head>
 <body>
@@ -38,30 +75,27 @@
     <nav id="main-nav"></nav>
 
     <h1>陈诗洁 | Jessy Chen</h1>
-    <p class="subtitle">Shanghai | PwC AC Shanghai | Quality Assurance | Business Analyst</p>
-    <p>作为 BA 与 QA 专家，我致力于通过数据驱动的分析与自动化的测试方案提升业务价值。</p>
+    <p class="subtitle">Shanghai | PwC AC | Quality Assurance | Business Analyst</p>
+    <p style="font-size: 15px; color: #333;">作为 BA 与 QA 专家，我致力于通过数据驱动的分析与自动化的测试方案提升业务价值。</p>
     
-    <h3 style="margin-top: 40px;">Projects</h3>
+    <h3 id="projects">Selected Projects</h3>
     <div id="project-list"></div>
 
-    <div class="footer">© 2026 陈诗洁 | Built with Passion for Excellence.</div>
+    <div class="footer">© 2026 Jessy Chen. Designed for simplicity.</div>
 
     <script>
+        // 数据部分保持不变，逻辑依然是数据驱动
         const projects = [
-            { title: "Salesforce 业务系统管理", sub: "CRM", desc: "基于 Salesforce 生态的客户关系管理方案，涵盖 O2O 全渠道数据整合。", tags: ["CRM", "Sales Cloud"], url: "#" },
-            { title: "自动化脚本", sub: "Automation", desc: "基于 Selenium 的端到端自动化方案，显著提升回归测试效率。", tags: ["Python", "Selenium"], url: "https://github.com/jcc371620/Automation-Projects" },
-            { title: "Power BI 作品集", sub: "BI", desc: "针对快消行业销量的多维数据看板。", tags: ["DAX", "SQL"], url: "#" },
-            { title: "Tableau 交互式看板", sub: "Data Visualization", desc: "深度挖掘业务数据，构建实时监控仪表板。", tags: ["Visual Analytics", "Tableau"], url: "#" },
-            { title: "draw.io 架构建模", sub: "Workflow", desc: "利用开源工具构建高标准业务流图。", tags: ["Workflow", "Architecture"], url: "#" },
-            { title: "Figma 作品集", sub: "Design", desc: "遵循 Ant Design 规范的 B 端系统设计。", tags: ["UI/UX", "Ant Design"], url: "#" },
-            { title: "Axure 作品集", sub: "Prototyping", desc: "高保真业务系统原型，涵盖复杂逻辑交互。", tags: ["Prototyping", "Logic"], url: "#" },
-            { title: "Visio 业务流程建模", sub: "BPM", desc: "基于 BPMN 2.0 标准的跨部门协作流程图。", tags: ["BPMN 2.0", "Visio"], url: "#" },
-            { title: "Xmind 逻辑看板", sub: "Logic Mapping", desc: "通过思维导图进行深度业务解构。", tags: ["Logic Mapping"], url: "./Assets/B2B.pdf" }
+            { title: "Salesforce 业务管理", sub: "CRM", desc: "基于 Salesforce 生态的客户关系管理方案，涵盖 O2O 全渠道数据整合。", tags: ["CRM", "Sales Cloud"], url: "#" },
+            { title: "自动化测试框架", sub: "Automation", desc: "基于 Python 的端到端自动化方案，显著提升回归测试效率。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects" },
+            { title: "Power BI 销量看板", sub: "BI", desc: "针对快消行业销量的多维数据可视化看板。", tags: ["DAX", "SQL"], url: "#" },
+            { title: "Tableau 交互监控", sub: "Data Viz", desc: "构建实时监控仪表板，辅助管理层通过视觉分析决策。", tags: ["Analytics", "Tableau"], url: "#" },
+            { title: "业务流程建模", sub: "BPM", desc: "基于 BPMN 2.0 标准的跨部门协作流程图设计。", tags: ["Visio", "BPMN"], url: "#" }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
             <a href="${p.url}" class="project-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
-                <h4>${p.title} <small>(${p.sub})</small></h4>
+                <h4>${p.title} <small>/ ${p.sub}</small></h4>
                 <p>${p.desc}</p>
                 <div class="tag-container">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
             </a>
