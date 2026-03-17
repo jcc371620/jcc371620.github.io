@@ -3,157 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessy Chen | BA & QA Specialist's Time Machine</title>
+    <title>Jessy Chen | Time Machine Space</title>
     <style>
         :root {
-            --doraemon-blue: #00a0e9;   /* 哆啦A梦经典蓝 */
-            --pouch-white: #ffffff;      /* 百宝袋白 */
-            --dorayaki-yellow: #fbc02d; /* 铜锣烧黄/铃铛黄 */
-            --bell-red: #e53935;         /* 铃铛红/项圈红 */
-            --text-main: #333333;
-            --text-secondary: #666666;
-            --border: #e1f5fe;
+            --dora-blue: #00a0e9;   /* 经典蓝 */
+            --dora-red: #e53935;    /* 丝带红 */
+            --dora-yellow: #ffca28; /* 铃铛金 */
+            --bg-silver: #f8f9fa;   /* 极浅灰底，增加高级感 */
+            --text-dark: #2c3e50;
         }
         
         body { 
-            background: #e3f2fd;        /* 淡淡的梦幻天蓝底色 */
-            color: var(--text-main); 
-            font-family: -apple-system, "SF Pro SC", "SF Pro Display", "Helvetica Neue", "Microsoft YaHei", sans-serif; 
+            background: var(--bg-silver); 
+            color: var(--text-dark); 
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; 
             line-height: 1.6; 
-            padding: 40px 20px; 
-            max-width: 900px; 
+            padding: 60px 24px; 
+            max-width: 800px; 
             margin: 0 auto; 
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* 顶部状态栏：改成铃铛风格 */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            background: #fff;
-            border-radius: 30px; /* 大圆角 */
-            font-size: 13px;
-            font-weight: 500;
-            border: 2px solid var(--doraemon-blue);
-            margin-bottom: 30px;
-            color: var(--doraemon-blue);
+        /* 顶部极其简约的导航 */
+        nav { margin-bottom: 80px; display: flex; gap: 40px; }
+        nav a { 
+            text-decoration: none; 
+            font-size: 14px; 
+            color: #95a5a6; 
+            font-weight: 500; 
+            transition: 0.3s;
+            position: relative;
         }
-        .status-dot { width: 10px; height: 10px; background: var(--dorayaki-yellow); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 10px var(--dorayaki-yellow); }
+        nav a:hover { color: var(--dora-blue); }
+        nav a:hover::after {
+            content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: var(--dora-blue);
+        }
 
-        /* 导航 */
-        nav { margin-bottom: 60px; display: flex; gap: 30px; justify-content: center; }
-        nav a { text-decoration: none; font-size: 15px; color: var(--text-secondary); transition: 0.3s; padding: 5px 15px; border-radius: 20px; font-weight: 600; }
-        nav a:hover { color: #fff; background: var(--doraemon-blue); }
+        /* 英雄区：名字下方那条“红领巾”是灵魂 */
+        .hero { margin-bottom: 100px; }
+        h1 { 
+            font-size: 42px; 
+            font-weight: 700; 
+            margin: 0; 
+            letter-spacing: -1px; 
+        }
+        .red-collar { 
+            width: 80px; 
+            height: 4px; 
+            background: var(--dora-red); 
+            margin: 15px 0 25px 0; 
+            border-radius: 2px;
+            position: relative;
+        }
+        /* 铃铛点缀：微小的金色圆点 */
+        .red-collar::after {
+            content: ''; position: absolute; right: -15px; top: -3px; width: 10px; height: 10px; 
+            background: var(--dora-yellow); border-radius: 50%; box-shadow: 0 0 5px rgba(255,202,40,0.5);
+        }
+        .hero-desc { font-size: 17px; color: #7f8c8d; max-width: 500px; }
 
-        /* 英雄区布局 */
-        .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-bottom: 80px; align-items: center; }
-        h1 { font-size: 48px; font-weight: 800; letter-spacing: -1.2px; margin: 0 0 10px 0; color: var(--doraemon-blue); text-shadow: 2px 2px 4px rgba(0, 160, 233, 0.1); }
-        .hero-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.5; }
-
-        /* 哆啦A梦卡片模块 */
-        .section-title { font-size: 26px; font-weight: 700; margin-bottom: 30px; letter-spacing: -0.5px; color: var(--doraemon-blue); position: relative; display: inline-block; padding-bottom: 10px; }
-        .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px; background: var(--bell-red); border-radius: 2px; }
+        /* 卡片设计：去掉粗边框，改为极细的蓝色侧边或线条 */
+        .section-title { font-size: 20px; font-weight: 600; margin-bottom: 30px; color: var(--dora-blue); }
         
-        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
-        .apple-card {
-            background: var(--pouch-white);
-            border-radius: 25px; /* 超大圆角，像铜锣烧 */
-            padding: 28px;
-            border: 2px solid var(--doraemon-blue);
-            box-shadow: 0 8px 30px rgba(0, 160, 233, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .pocket-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 160, 233, 0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             text-decoration: none;
             color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
         }
-        .apple-card:hover { transform: scale(1.03) translateY(-5px); box-shadow: 0 12px 40px rgba(0, 160, 233, 0.2); }
+        /* 悬停效果：左侧出现蓝色竖条 */
+        .pocket-card::before {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 0; 
+            background: var(--dora-blue); transition: 0.3s;
+        }
+        .pocket-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+        .pocket-card:hover::before { width: 4px; }
 
-        .skill-tag {
-            display: inline-block;
-            background: #e1f5fe;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            margin-right: 6px;
-            margin-top: 8px;
-            color: var(--doraemon-blue);
-            font-weight: 600;
+        .pocket-card h4 { margin: 0 0 10px 0; font-size: 18px; color: var(--text-dark); }
+        .pocket-card p { margin: 0; font-size: 14px; color: #95a5a6; line-height: 1.6; }
+        
+        .tags { margin-top: 15px; }
+        .tag { 
+            font-size: 11px; color: var(--dora-blue); background: rgba(0,160,233,0.05); 
+            padding: 2px 8px; border-radius: 4px; margin-right: 5px; font-weight: 600;
         }
 
-        /* 页脚 */
-        .footer { margin-top: 100px; padding: 40px 0; border-top: 2px solid var(--doraemon-blue); font-size: 13px; color: var(--doraemon-blue); display: flex; justify-content: space-between; font-weight: 600; }
-
-        @media (max-width: 768px) {
-            .hero, .grid-container { grid-template-columns: 1fr; }
-            h1 { font-size: 36px; }
+        .footer { 
+            margin-top: 120px; padding-top: 30px; border-top: 1px solid #eee; 
+            font-size: 12px; color: #bdc3c7; display: flex; justify-content: space-between; 
         }
+
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <div class="status-badge">
-        <span class="status-dot"></span> 用竹蜻蜓寻找新的机会 | 坐标：上海 Time Machine
-    </div>
-
     <nav id="main-nav"></nav>
 
     <header class="hero">
-        <div>
-            <h1>陈诗洁 Jessy Chen</h1>
-            <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>就像哆啦A梦的百宝袋，我也能用数据和自动化工具，帮你变出最棒的业务方案与最高质量的流程！</p>
-        </div>
-        <div style="background: var(--doraemon-blue); height: 200px; border-radius: 100px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; box-shadow: 0 10px 30px rgba(0, 160, 233, 0.3);">
-            [ 这里放你带着竹蜻蜓的职业照 ]
-        </div>
+        <h1>陈诗洁 Jessy Chen</h1>
+        <div class="red-collar"></div>
+        <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>专注于构建如“时光机”般可靠的自动化方案与业务逻辑。</p>
     </header>
 
-    <section>
-        <h2 class="section-title">我的百宝袋技能点</h2>
-        <div class="grid-container" style="margin-bottom: 60px;">
-            <div class="apple-card" style="background: rgba(251, 192, 45, 0.05); border-color: var(--dorayaki-yellow);">
-                <h4 style="margin:0 0 10px 0; color: var(--dorayaki-yellow);">🕵️‍♀️ 质量保证的放大镜</h4>
-                <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">精通 Playwright/Selenium 自动化，擅长复杂业务流回归测试与接口校验。任何小 Bug 都别想逃过我的法眼！</p>
+    <section style="margin-bottom: 80px;">
+        <h2 class="section-title">核心领域 / Core Domains</h2>
+        <div class="grid">
+            <div class="pocket-card">
+                <h4>自动化测试</h4>
+                <p>利用 Playwright 等百宝袋工具，确保业务逻辑在持续集成中稳如泰山。</p>
             </div>
-            <div class="apple-card" style="background: rgba(0, 160, 233, 0.05); border-color: var(--doraemon-blue);">
-                <h4 style="margin:0 0 10px 0; color: var(--doraemon-blue);">💡 业务分析的时空门</h4>
-                <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">具备大型 CRM 项目经验，擅长从复杂的数据中“穿越”过去，提炼核心需求并转化为技术原型。</p>
+            <div class="pocket-card">
+                <h4>业务需求分析</h4>
+                <p>穿透复杂的原始需求，交付最直接有效的解决方案。</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2 class="section-title">从百宝袋里变出的精选项目</h2>
-        <div id="project-list" class="grid-container"></div>
+        <h2 class="section-title">精选项目 / Projects</h2>
+        <div id="project-list" class="grid"></div>
     </section>
 
     <footer class="footer">
-        <div>© 2026 Jessy Chen. Built with Love and Doraemon Spirit.</div>
-        <div style="color: var(--bell-red);">叮当~ Time Machine Ready!</div>
+        <div>© 2026 Jessy Chen. Dora-Inspired Minimalism.</div>
+        <div>叮当~ 未来已来</div>
     </footer>
 
     <script>
         const projects = [
-            { title: "Salesforce CRM 系统管理", sub: "Business Analysis", desc: "主导 O2O 渠道数据整合，优化客户生命周期管理逻辑。", tags: ["Salesforce", "SOQL"], url: "#" },
-            { title: "自动化测试工程", sub: "Quality Assurance", desc: "构建高可用的端到端自动化框架，覆盖 80% 核心业务流。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects" },
-            { title: "Power BI 数字化看板", sub: "Data Insight", desc: "为快消行业提供多维销售预测看板，辅助决策下沉。", tags: ["DAX", "SQL"], url: "#" },
-            { title: "业务流程架构设计", sub: "Workflow", desc: "基于 BPMN 2.0 的跨部门协作图谱，减少 20% 流程冗余。", tags: ["Visio", "Architecture"], url: "#" }
+            { title: "Salesforce CRM 系统管理", sub: "BA", desc: "优化客户全生命周期逻辑，实现数据流的“任意门”式无缝集成。", tags: ["Salesforce", "SOQL"], url: "#" },
+            { title: "自动化测试工程", sub: "QA", desc: "构建高效回归框架，让 Bug 无处遁形。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects" },
+            { title: "数据可视化看板", sub: "BI", desc: "将晦涩的数字转化为直观的业务洞察。", tags: ["Power BI", "SQL"], url: "#" },
+            { title: "业务流程架构设计", sub: "Workflow", desc: "通过科学建模消除流程中的冗余时间。", tags: ["BPMN", "Visio"], url: "#" }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
-            <a href="${p.url}" class="apple-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
-                <div style="font-size: 12px; color: var(--doraemon-blue); margin-bottom: 4px; font-weight: 600;">${p.sub}</div>
-                <h4 style="margin: 0 0 8px 0; font-size: 19px; color: var(--doraemon-blue);">${p.title}</h4>
-                <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">${p.desc}</p>
-                <div>${p.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>
+            <a href="${p.url}" class="pocket-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
+                <div style="font-size: 11px; color: #bdc3c7; margin-bottom: 5px;">${p.sub}</div>
+                <h4>${p.title}</h4>
+                <p>${p.desc}</p>
+                <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
             </a>
         `).join('');
 
         const navLinks = [
-            { name: "时空首页", url: "index.html" },
+            { name: "首页", url: "index.html" },
             { name: "GitHub", url: "https://github.com/jcc371620", target: "_blank" },
-            { name: "领英时空", url: "#" },
-            { name: "用竹蜻蜓联系我", url: "mailto:jcc371620@gmail.com" }
+            { name: "领英", url: "#" },
+            { name: "联系我", url: "mailto:jcc371620@gmail.com" }
         ];
         document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
