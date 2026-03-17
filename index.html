@@ -3,109 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shijie Chen | Personal Space</title>
+    <title>Jessy Chen | BA & QA Specialist</title>
     <style>
         :root {
-            --bg: #ffffff;        /* 纯白背景 */
-            --text: #1a1a1a;      /* 深灰黑色，比纯黑更柔和 */
-            --light-gray: #f5f5f7; /* 浅灰底色（苹果风） */
-            --border: #e5e5e5;    /* 细边框颜色 */
-            --secondary: #6e6e73; /* 辅助文字颜色 */
+            --apple-silver: #f5f5f7;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --glass: rgba(255, 255, 255, 0.7);
+            --border: rgba(0, 0, 0, 0.1);
         }
         
         body { 
-            background: var(--bg); 
-            color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.5; 
-            padding: 80px 24px; 
-            max-width: 680px; 
+            background: var(--apple-silver); 
+            color: var(--apple-dark); 
+            font-family: -apple-system, "SF Pro SC", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
+            line-height: 1.4; 
+            padding: 40px 20px; 
+            max-width: 900px; 
             margin: 0 auto; 
-            -webkit-font-smoothing: antialiased; /* 字体抗锯齿优化 */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 导航栏：极简灰 */
-        nav { margin-bottom: 60px; }
-        nav a { margin-right: 24px; text-decoration: none; font-size: 13px; color: var(--secondary); transition: color 0.2s; font-weight: 500; }
-        nav a:hover { color: var(--text); }
-
-        /* 标题：增加字间距，沉稳大气 */
-        h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
-        .subtitle { color: var(--secondary); margin-bottom: 48px; font-size: 14px; font-weight: 400; }
-        
-        h3 { margin-top: 64px; margin-bottom: 24px; font-size: 18px; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-
-        /* 项目卡片：去掉边框，改用悬停阴影或背景色 */
-        .project-card { 
-            display: block; 
-            padding: 20px 0; 
-            margin-bottom: 8px; 
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease; 
-            cursor: pointer; 
-            text-decoration: none; 
-            color: inherit; 
-        }
-        
-        .project-card:hover { 
-            padding-left: 8px; /* 轻微位移感 */
-            background: #fafafa;
-        }
-
-        .project-card h4 { margin: 0 0 6px 0; font-size: 16px; font-weight: 600; }
-        .project-card h4 small { color: var(--secondary); font-weight: 400; margin-left: 8px; font-size: 12px; }
-        .project-card p { margin: 0; font-size: 14px; color: var(--secondary); }
-        
-        /* 标签：低调的浅灰色块 */
-        .tag-container { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
-        .tag { 
-            font-size: 10px; 
-            color: var(--secondary); 
-            background: var(--light-gray); 
-            padding: 2px 8px; 
-            border-radius: 4px;
+        /* 顶部状态栏 */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: #fff;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 500;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        .status-dot { width: 8px; height: 8px; background: #34c759; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px #34c759; }
+
+        /* 导航 */
+        nav { margin-bottom: 60px; display: flex; gap: 30px; }
+        nav a { text-decoration: none; font-size: 14px; color: var(--apple-gray); transition: 0.2s; }
+        nav a:hover { color: var(--apple-dark); }
+
+        /* 英雄区布局 */
+        .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin-bottom: 80px; align-items: center; }
+        h1 { font-size: 48px; font-weight: 700; letter-spacing: -1.2px; margin: 0 0 10px 0; }
+        .hero-desc { font-size: 18px; color: var(--apple-gray); line-height: 1.5; }
+
+        /* 磨砂玻璃卡片模块 */
+        .section-title { font-size: 24px; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.5px; }
+        
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+        .apple-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .apple-card:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-right: 6px;
+            margin-top: 8px;
+            color: var(--apple-dark);
         }
 
-        .footer { margin-top: 100px; font-size: 12px; color: #b0b0b0; text-align: left; }
+        /* 页脚 */
+        .footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--apple-gray); display: flex; justify-content: space-between; }
+
+        @media (max-width: 768px) {
+            .hero, .grid-container { grid-template-columns: 1fr; }
+            h1 { font-size: 36px; }
+        }
     </style>
 </head>
 <body>
 
+    <div class="status-badge">
+        <span class="status-dot"></span> 正在寻找新的机会 | 坐标：上海
+    </div>
+
     <nav id="main-nav"></nav>
 
-    <h1>陈诗洁 | Jessy Chen</h1>
-    <p class="subtitle">Shanghai | PwC AC | Quality Assurance | Business Analyst</p>
-    <p style="font-size: 15px; color: #333;">作为 BA 与 QA 专家，我致力于通过数据驱动的分析与自动化的测试方案提升业务价值。</p>
-    
-    <h3 id="projects">Selected Projects</h3>
-    <div id="project-list"></div>
+    <header class="hero">
+        <div>
+            <h1>陈诗洁 Jessy Chen</h1>
+            <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>致力于构建高质量的业务逻辑与自动化流程。</p>
+        </div>
+        <div style="background: #e5e5e5; height: 180px; border-radius: 100px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 14px;">
+            [ 形象展示区 ]
+        </div>
+    </header>
 
-    <div class="footer">© 2026 Jessy Chen. Designed for simplicity.</div>
+    <section>
+        <h2 class="section-title">核心专业领域</h2>
+        <div class="grid-container" style="margin-bottom: 60px;">
+            <div class="apple-card">
+                <h4 style="margin:0 0 10px 0">🔍 QA 质量保证</h4>
+                <p style="font-size: 14px; color: var(--apple-gray); margin: 0;">精通 Playwright/Selenium 自动化，擅长复杂业务流回归测试与接口校验。</p>
+            </div>
+            <div class="apple-card">
+                <h4 style="margin:0 0 10px 0">📊 业务需求分析</h4>
+                <p style="font-size: 14px; color: var(--apple-gray); margin: 0;">具备大型 CRM 项目经验，擅长从数据中提炼需求并转化为技术原型。</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">精选项目</h2>
+        <div id="project-list" class="grid-container"></div>
+    </section>
+
+    <footer class="footer">
+        <div>© 2026 Jessy Chen. Designed with Apple Aesthetic.</div>
+        <div>Curated with Love.</div>
+    </footer>
 
     <script>
-        // 数据部分保持不变，逻辑依然是数据驱动
         const projects = [
-            { title: "Salesforce 业务管理", sub: "CRM", desc: "基于 Salesforce 生态的客户关系管理方案，涵盖 O2O 全渠道数据整合。", tags: ["CRM", "Sales Cloud"], url: "#" },
-            { title: "自动化测试框架", sub: "Automation", desc: "基于 Python 的端到端自动化方案，显著提升回归测试效率。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects" },
-            { title: "Power BI 销量看板", sub: "BI", desc: "针对快消行业销量的多维数据可视化看板。", tags: ["DAX", "SQL"], url: "#" },
-            { title: "Tableau 交互监控", sub: "Data Viz", desc: "构建实时监控仪表板，辅助管理层通过视觉分析决策。", tags: ["Analytics", "Tableau"], url: "#" },
-            { title: "业务流程建模", sub: "BPM", desc: "基于 BPMN 2.0 标准的跨部门协作流程图设计。", tags: ["Visio", "BPMN"], url: "#" }
+            { title: "Salesforce CRM 系统管理", sub: "Business Analysis", desc: "主导 O2O 渠道数据整合，优化客户生命周期管理逻辑。", tags: ["Salesforce", "SOQL"], url: "#" },
+            { title: "自动化测试工程", sub: "Quality Assurance", desc: "构建高可用的端到端自动化框架，覆盖 80% 核心业务流。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects/test_automation_framework" },
+            { title: "Power BI 数字化看板", sub: "Data Insight", desc: "为快消行业提供多维销售预测看板，辅助决策下沉。", tags: ["DAX", "SQL"], url: "#" },
+            { title: "业务流程架构设计", sub: "Workflow", desc: "基于 BPMN 2.0 的跨部门协作图谱，减少 20% 流程冗余。", tags: ["Visio", "Architecture"], url: "#" }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
-            <a href="${p.url}" class="project-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
-                <h4>${p.title} <small>/ ${p.sub}</small></h4>
-                <p>${p.desc}</p>
-                <div class="tag-container">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            <a href="${p.url}" class="apple-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
+                <div style="font-size: 12px; color: var(--apple-gray); margin-bottom: 4px;">${p.sub}</div>
+                <h4 style="margin: 0 0 8px 0; font-size: 18px;">${p.title}</h4>
+                <p style="font-size: 14px; color: var(--apple-gray); line-height: 1.5; margin-bottom: 12px;">${p.desc}</p>
+                <div>${p.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>
             </a>
         `).join('');
 
         const navLinks = [
-            { name: "Home", url: "index.html" },
+            { name: "首页", url: "index.html" },
             { name: "GitHub", url: "https://github.com/jcc371620", target: "_blank" },
-            { name: "Email", url: "mailto:jcc371620@gmail.com" },
-            { name: "Phone", url: "tel:+8617701690962" }
+            { name: "领英", url: "#" },
+            { name: "联系我", url: "mailto:jcc371620@gmail.com" }
         ];
         document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
