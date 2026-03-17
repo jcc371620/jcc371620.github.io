@@ -3,83 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessy Chen | BA & QA Specialist</title>
+    <title>Jessy Chen | BA & QA Specialist's Time Machine</title>
     <style>
         :root {
-            --apple-silver: #f5f5f7;
-            --apple-dark: #1d1d1f;
-            --apple-gray: #86868b;
-            --glass: rgba(255, 255, 255, 0.7);
-            --border: rgba(0, 0, 0, 0.1);
+            --doraemon-blue: #00a0e9;   /* 哆啦A梦经典蓝 */
+            --pouch-white: #ffffff;      /* 百宝袋白 */
+            --dorayaki-yellow: #fbc02d; /* 铜锣烧黄/铃铛黄 */
+            --bell-red: #e53935;         /* 铃铛红/项圈红 */
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border: #e1f5fe;
         }
         
         body { 
-            background: var(--apple-silver); 
-            color: var(--apple-dark); 
-            font-family: -apple-system, "SF Pro SC", "SF Pro Display", "Helvetica Neue", Arial, sans-serif; 
-            line-height: 1.4; 
+            background: #e3f2fd;        /* 淡淡的梦幻天蓝底色 */
+            color: var(--text-main); 
+            font-family: -apple-system, "SF Pro SC", "SF Pro Display", "Helvetica Neue", "Microsoft YaHei", sans-serif; 
+            line-height: 1.6; 
             padding: 40px 20px; 
             max-width: 900px; 
             margin: 0 auto; 
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 顶部状态栏 */
+        /* 顶部状态栏：改成铃铛风格 */
         .status-badge {
             display: inline-flex;
             align-items: center;
-            padding: 6px 12px;
+            padding: 8px 16px;
             background: #fff;
-            border-radius: 20px;
-            font-size: 12px;
+            border-radius: 30px; /* 大圆角 */
+            font-size: 13px;
             font-weight: 500;
-            border: 1px solid var(--border);
+            border: 2px solid var(--doraemon-blue);
             margin-bottom: 30px;
+            color: var(--doraemon-blue);
         }
-        .status-dot { width: 8px; height: 8px; background: #34c759; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px #34c759; }
+        .status-dot { width: 10px; height: 10px; background: var(--dorayaki-yellow); border-radius: 50%; margin-right: 10px; box-shadow: 0 0 10px var(--dorayaki-yellow); }
 
         /* 导航 */
-        nav { margin-bottom: 60px; display: flex; gap: 30px; }
-        nav a { text-decoration: none; font-size: 14px; color: var(--apple-gray); transition: 0.2s; }
-        nav a:hover { color: var(--apple-dark); }
+        nav { margin-bottom: 60px; display: flex; gap: 30px; justify-content: center; }
+        nav a { text-decoration: none; font-size: 15px; color: var(--text-secondary); transition: 0.3s; padding: 5px 15px; border-radius: 20px; font-weight: 600; }
+        nav a:hover { color: #fff; background: var(--doraemon-blue); }
 
         /* 英雄区布局 */
-        .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin-bottom: 80px; align-items: center; }
-        h1 { font-size: 48px; font-weight: 700; letter-spacing: -1.2px; margin: 0 0 10px 0; }
-        .hero-desc { font-size: 18px; color: var(--apple-gray); line-height: 1.5; }
+        .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-bottom: 80px; align-items: center; }
+        h1 { font-size: 48px; font-weight: 800; letter-spacing: -1.2px; margin: 0 0 10px 0; color: var(--doraemon-blue); text-shadow: 2px 2px 4px rgba(0, 160, 233, 0.1); }
+        .hero-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.5; }
 
-        /* 磨砂玻璃卡片模块 */
-        .section-title { font-size: 24px; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.5px; }
+        /* 哆啦A梦卡片模块 */
+        .section-title { font-size: 26px; font-weight: 700; margin-bottom: 30px; letter-spacing: -0.5px; color: var(--doraemon-blue); position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px; background: var(--bell-red); border-radius: 2px; }
         
         .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
         .apple-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 18px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            background: var(--pouch-white);
+            border-radius: 25px; /* 超大圆角，像铜锣烧 */
+            padding: 28px;
+            border: 2px solid var(--doraemon-blue);
+            box-shadow: 0 8px 30px rgba(0, 160, 233, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: inherit;
         }
-        .apple-card:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); }
+        .apple-card:hover { transform: scale(1.03) translateY(-5px); box-shadow: 0 12px 40px rgba(0, 160, 233, 0.2); }
 
         .skill-tag {
             display: inline-block;
-            background: rgba(0, 0, 0, 0.05);
+            background: #e1f5fe;
             padding: 4px 10px;
             border-radius: 6px;
             font-size: 12px;
             margin-right: 6px;
             margin-top: 8px;
-            color: var(--apple-dark);
+            color: var(--doraemon-blue);
+            font-weight: 600;
         }
 
         /* 页脚 */
-        .footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--apple-gray); display: flex; justify-content: space-between; }
+        .footer { margin-top: 100px; padding: 40px 0; border-top: 2px solid var(--doraemon-blue); font-size: 13px; color: var(--doraemon-blue); display: flex; justify-content: space-between; font-weight: 600; }
 
         @media (max-width: 768px) {
             .hero, .grid-container { grid-template-columns: 1fr; }
@@ -90,7 +93,7 @@
 <body>
 
     <div class="status-badge">
-        <span class="status-dot"></span> 正在寻找新的机会 | 坐标：上海
+        <span class="status-dot"></span> 用竹蜻蜓寻找新的机会 | 坐标：上海 Time Machine
     </div>
 
     <nav id="main-nav"></nav>
@@ -98,59 +101,59 @@
     <header class="hero">
         <div>
             <h1>陈诗洁 Jessy Chen</h1>
-            <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>致力于构建高质量的业务逻辑与自动化流程。</p>
+            <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>就像哆啦A梦的百宝袋，我也能用数据和自动化工具，帮你变出最棒的业务方案与最高质量的流程！</p>
         </div>
-        <div style="background: #e5e5e5; height: 180px; border-radius: 100px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 14px;">
-            [ 形象展示区 ]
+        <div style="background: var(--doraemon-blue); height: 200px; border-radius: 100px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; box-shadow: 0 10px 30px rgba(0, 160, 233, 0.3);">
+            [ 这里放你带着竹蜻蜓的职业照 ]
         </div>
     </header>
 
     <section>
-        <h2 class="section-title">核心专业领域</h2>
+        <h2 class="section-title">我的百宝袋技能点</h2>
         <div class="grid-container" style="margin-bottom: 60px;">
-            <div class="apple-card">
-                <h4 style="margin:0 0 10px 0">🔍 QA 质量保证</h4>
-                <p style="font-size: 14px; color: var(--apple-gray); margin: 0;">精通 Playwright/Selenium 自动化，擅长复杂业务流回归测试与接口校验。</p>
+            <div class="apple-card" style="background: rgba(251, 192, 45, 0.05); border-color: var(--dorayaki-yellow);">
+                <h4 style="margin:0 0 10px 0; color: var(--dorayaki-yellow);">🕵️‍♀️ 质量保证的放大镜</h4>
+                <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">精通 Playwright/Selenium 自动化，擅长复杂业务流回归测试与接口校验。任何小 Bug 都别想逃过我的法眼！</p>
             </div>
-            <div class="apple-card">
-                <h4 style="margin:0 0 10px 0">📊 业务需求分析</h4>
-                <p style="font-size: 14px; color: var(--apple-gray); margin: 0;">具备大型 CRM 项目经验，擅长从数据中提炼需求并转化为技术原型。</p>
+            <div class="apple-card" style="background: rgba(0, 160, 233, 0.05); border-color: var(--doraemon-blue);">
+                <h4 style="margin:0 0 10px 0; color: var(--doraemon-blue);">💡 业务分析的时空门</h4>
+                <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">具备大型 CRM 项目经验，擅长从复杂的数据中“穿越”过去，提炼核心需求并转化为技术原型。</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2 class="section-title">精选项目</h2>
+        <h2 class="section-title">从百宝袋里变出的精选项目</h2>
         <div id="project-list" class="grid-container"></div>
     </section>
 
     <footer class="footer">
-        <div>© 2026 Jessy Chen. Designed with Apple Aesthetic.</div>
-        <div>Curated with Love.</div>
+        <div>© 2026 Jessy Chen. Built with Love and Doraemon Spirit.</div>
+        <div style="color: var(--bell-red);">叮当~ Time Machine Ready!</div>
     </footer>
 
     <script>
         const projects = [
             { title: "Salesforce CRM 系统管理", sub: "Business Analysis", desc: "主导 O2O 渠道数据整合，优化客户生命周期管理逻辑。", tags: ["Salesforce", "SOQL"], url: "#" },
-            { title: "自动化测试工程", sub: "Quality Assurance", desc: "构建高可用的端到端自动化框架，覆盖 80% 核心业务流。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects/test_automation_framework" },
+            { title: "自动化测试工程", sub: "Quality Assurance", desc: "构建高可用的端到端自动化框架，覆盖 80% 核心业务流。", tags: ["Python", "Playwright"], url: "https://github.com/jcc371620/Automation-Projects" },
             { title: "Power BI 数字化看板", sub: "Data Insight", desc: "为快消行业提供多维销售预测看板，辅助决策下沉。", tags: ["DAX", "SQL"], url: "#" },
             { title: "业务流程架构设计", sub: "Workflow", desc: "基于 BPMN 2.0 的跨部门协作图谱，减少 20% 流程冗余。", tags: ["Visio", "Architecture"], url: "#" }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
             <a href="${p.url}" class="apple-card" ${p.url.startsWith('http') ? 'target="_blank"' : ''}>
-                <div style="font-size: 12px; color: var(--apple-gray); margin-bottom: 4px;">${p.sub}</div>
-                <h4 style="margin: 0 0 8px 0; font-size: 18px;">${p.title}</h4>
-                <p style="font-size: 14px; color: var(--apple-gray); line-height: 1.5; margin-bottom: 12px;">${p.desc}</p>
+                <div style="font-size: 12px; color: var(--doraemon-blue); margin-bottom: 4px; font-weight: 600;">${p.sub}</div>
+                <h4 style="margin: 0 0 8px 0; font-size: 19px; color: var(--doraemon-blue);">${p.title}</h4>
+                <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">${p.desc}</p>
                 <div>${p.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>
             </a>
         `).join('');
 
         const navLinks = [
-            { name: "首页", url: "index.html" },
+            { name: "时空首页", url: "index.html" },
             { name: "GitHub", url: "https://github.com/jcc371620", target: "_blank" },
-            { name: "领英", url: "#" },
-            { name: "联系我", url: "mailto:jcc371620@gmail.com" }
+            { name: "领英时空", url: "#" },
+            { name: "用竹蜻蜓联系我", url: "mailto:jcc371620@gmail.com" }
         ];
         document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
