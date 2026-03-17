@@ -5,165 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shijie Chen | Personal Space</title>
     <style>
-        /* 基础样式保持你的黑白极简风 */
-        body { background-color: #000; color: #fff; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; line-height: 1.6; padding: 60px 20px; max-width: 750px; margin: 0 auto; }
-        nav { margin-bottom: 40px; }
-        nav a { margin-right: 20px; text-decoration: none; font-size: 0.9rem; color: #888; transition: 0.3s; }
-        nav a:hover { color: #fff; }
-        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0; }
-        .subtitle { color: #666; margin-bottom: 40px; }
-
-        /* 项目卡片 */
-        .project-card {
-            display: block;
-            text-decoration: none !important;
-            color: inherit;
-            padding: 24px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #222; 
-            background-color: #000;
+        :root {
+            --bg: #0d1117;          /* 深蓝黑背景，接近 GitHub 暗色 */
+            --text: #c9d1d9;        /* 浅灰文字，不刺眼 */
+            --gray: #8b949e;
+            --dark-gray: #30363d;
+            --accent: #00ff41;      /* 经典荧光绿 (黑客帝国绿) */
+            --accent-dim: rgba(0, 255, 65, 0.1);
+            --border: #21262d;      /* 卡片边框 */
         }
-        .project-card:hover { transform: translateY(-5px); border-color: #fff; background-color: #0a0a0a; }
-        .project-card h4 { margin: 0 0 8px 0; font-size: 1.2rem; }
-        .project-card p { margin: 0; font-size: 0.9rem; color: #888; }
+        
+        /* 全局基础：增加类似终端的打字机字体 */
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: "Fira Code", "Courier New", monospace; /* 优先使用等宽字体 */
+            line-height: 1.6; 
+            padding: 60px 20px; 
+            max-width: 750px; 
+            margin: 0 auto; 
+        }
+
+        /* 导航栏：霓虹效果 */
+        nav { margin-bottom: 40px; border-bottom: 1px solid var(--dark-gray); padding-bottom: 20px; }
+        nav a { margin-right: 20px; text-decoration: none; font-size: 0.9rem; color: var(--gray); transition: 0.3s; }
+        nav a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); } /* 霓虹发光 */
+
+        /* 标题：加粗，荧光绿 */
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0; color: var(--accent); text-shadow: 0 0 15px var(--accent); }
+        .subtitle { color: var(--gray); margin-bottom: 40px; font-size: 0.8rem; opacity: 0.7; }
+        
+        h3 { margin-top: 40px; border-bottom: 1px solid var(--dark-gray); padding-bottom: 10px; color: var(--accent); }
+
+        /* 项目卡片：模拟终端窗口 */
+        .project-card { 
+            display: block; 
+            padding: 24px; 
+            margin-bottom: 20px; 
+            border: 1px solid var(--border); 
+            background: rgba(13, 17, 23, 0.8); /* 半透明背景 */
+            transition: 0.3s; 
+            cursor: pointer; 
+            text-decoration: none; 
+            color: inherit; 
+            position: relative;
+        }
+        
+        /* 悬停：卡片霓虹发光 */
+        .project-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent); 
+            box-shadow: 0 0 20px var(--accent-dim); 
+        }
+
+        .project-card h4 { margin: 0 0 8px 0; font-size: 1.2rem; color: var(--text); }
+        .project-card h4 small { color: var(--gray); font-weight: normal; margin-left: 5px; font-size: 0.8rem; }
+        .project-card p { margin: 0; font-size: 0.85rem; color: var(--gray); }
+        
+        /* 标签：代码高亮风格 */
         .tag-container { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { font-size: 10px; color: #666; background: #111; padding: 2px 10px; border-radius: 4px; border: 1px solid #222; text-transform: uppercase; }
-
-        /* 统一密码弹窗样式 */
-        #password-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); /* 加深遮罩颜色 */
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+        .tag { 
+            font-size: 10px; 
+            color: var(--accent); 
+            background: var(--accent-dim); /* 淡淡的荧光背景 */
+            padding: 2px 10px; 
+            border: 1px solid var(--accent); 
+            text-transform: uppercase; 
+            border-radius: 2px;
         }
-        .password-box { background: #111; padding: 40px; border: 1px solid #333; text-align: center; border-radius: 8px; width: 300px; }
-        .password-box h4 { margin-top: 0; }
-        .password-box input { background: #000; border: 1px solid #444; color: #fff; padding: 12px; margin: 20px 0; width: 100%; box-sizing: border-box; outline: none; }
-        .password-box button { background: #fff; color: #000; border: none; padding: 10px 25px; cursor: pointer; font-weight: bold; width: 100%; margin-bottom: 10px; }
-        .password-box .cancel-btn { background: transparent; color: #888; border: none; cursor: pointer; font-size: 0.8rem; }
 
-        .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid #222; padding-top: 20px; }
+        .footer { margin-top: 80px; font-size: 0.8rem; color: #444; border-top: 1px solid var(--border); padding-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
-
-    <div id="password-overlay">
-        <div class="password-box">
-            <h4>项目受限访问</h4>
-            <p style="font-size: 0.8rem; color: #666;">请输入密码以查看详细内容</p>
-            <input type="password" id="pw-input" placeholder="Password" onkeydown="if(event.keyCode==13) checkPassword()">
-            <button onclick="checkPassword()">确认解锁</button>
-            <button class="cancel-btn" onclick="closeOverlay()">取消返回</button>
-            <p id="error-msg" style="color: #ff4d4d; font-size: 12px; margin-top: 10px;"></p>
-        </div>
-    </div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="https://github.com/jcc371620" target="_blank">GitHub</a>
-        <a href="mailto:jcc371620@gmail.com">Email</a>
-        <a href="tel:+86 17701690962">Phone</a>
-    </nav>
-
-    <h1>陈诗洁 | Jessy Chen</h1>
-    <p class="subtitle">Shanghai | PwC AC Shanghai | Quality Assurance | Business Analyst</p>
-
-    <div class="content">
-        <p>作为 BA 与 QA 专家，我致力于通过数据驱动的分析与自动化的测试方案提升业务价值。</p>
-        <h3 id="projects" style="margin-top: 40px; border-bottom: 1px solid #222; padding-bottom: 10px;">Projects</h3>
-        
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>Salesforce 业务系统管理 <small style="color: #666; font-weight: normal;">(CRM)</small></h4>
-            <p>基于 Salesforce 生态的客户关系管理方案，涵盖 O2O 全渠道数据整合。</p>
-            <div class="tag-container"><span class="tag">CRM</span><span class="tag">Sales Cloud</span></div>
-        </div>
-
-        <div onclick="openOverlay('https://github.com/jcc371620/Automation-Projects')" class="project-card">
-            <h4>自动化脚本 <small style="color: #666; font-weight: normal;">(Automation)</small></h4>
-            <p>基于 Selenium 的端到端自动化方案，显著提升回归测试效率。</p>
-            <div class="tag-container"><span class="tag">Python</span><span class="tag">Selenium</span></div>
-        </div>
-
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>Power BI 作品集 <small style="color: #666; font-weight: normal;">(BI)</small></h4>
-            <p>针对快消行业销量的多维数据看板。</p>
-            <div class="tag-container"><span class="tag">DAX</span><span class="tag">SQL</span></div>
-        </div>
-
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>Tableau 交互式看板 <small style="color: #666; font-weight: normal;">(Data Visualization)</small></h4>
-            <p>深度挖掘业务数据，构建实时监控仪表板，通过直观的视觉分析辅助企业管理层决策。</p>
-            <div class="tag-container"><span class="tag">Visual Analytics</span><span class="tag">LOD Expressions</span><span class="tag">Tableau</span></div>
-        </div>
-
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>draw.io 架构建模 <small style="color: #666; font-weight: normal;">(Workflow)</small></h4>
-            <p>利用开源工具构建高标准业务流图。</p>
-            <div class="tag-container"><span class="tag">Workflow</span><span class="tag">Architecture</span></div>
-        </div>
-
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>Figma 作品集 <small style="color: #666; font-weight: normal;">(Design)</small></h4>
-            <p>遵循 Ant Design 规范的 B 端系统设计。</p>
-            <div class="tag-container"><span class="tag">UI/UX</span><span class="tag">Ant Design</span></div>
-        </div>
-
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>Axure 作品集 <small style="color: #666; font-weight: normal;">(Prototyping)</small></h4>
-            <p>高保真业务系统原型，涵盖复杂逻辑交互。</p>
-            <div class="tag-container"><span class="tag">Prototyping</span><span class="tag">Logic</span></div>
-        </div>
-
-        <div onclick="openOverlay('#')" class="project-card">
-            <h4>Visio 业务流程建模 <small style="color: #666; font-weight: normal;">(Business Process Modeling)</small></h4>
-            <p>基于 BPMN 2.0 标准的跨部门协作流程图，精确梳理复杂业务逻辑，消除流程冗余。</p>
-            <div class="tag-container"><span class="tag">BPMN 2.0</span><span class="tag">Process Mapping</span><span class="tag">Visio</span></div>
-        </div>
-
-        <div onclick="openOverlay('./Assets/B2B.pdf')" class="project-card">
-            <h4>Xmind 逻辑看板 <small style="color: #666; font-weight: normal;">(Logic Mapping)</small></h4>
-            <p>通过思维导图进行深度业务解构。</p>
-            <div class="tag-container"><span class="tag">Logic Mapping</span></div>
-        </div>
-        
-    </div>
-
-    <div class="footer">© 2026 陈诗洁 | Built with Passion for Excellence.</div>
-
-    <script>
-        let currentTarget = ""; // 记录当前想去哪
-
-        function openOverlay(url) {
-            currentTarget = url; // 记住目标地址
-            document.getElementById('password-overlay').style.display = 'flex';
-            document.getElementById('pw-input').focus(); // 自动聚焦输入框
-        }
-
-        function closeOverlay() {
-            document.getElementById('password-overlay').style.display = 'none';
-            document.getElementById('pw-input').value = '';
-            document.getElementById('error-msg').innerText = '';
-        }
-
-        function checkPassword() {
-            var pw = document.getElementById('pw-input').value;
-            // 你的统一密码
-            if (pw === '8888888888') {
-                if(currentTarget === "#") {
-                    alert("该项目详情正在整理中，敬请期待！");
-                    closeOverlay();
-                } else {
-                    window.location.href = currentTarget;
-                }
-            } else {
-                document.getElementById('error-msg').innerText = '密码错误，请联系作者获取。';
-            }
-        }
-    </script>
+    <nav id="main-nav"></nav>
+    ... (剩余HTML和JS不变)
 </body>
 </html>
