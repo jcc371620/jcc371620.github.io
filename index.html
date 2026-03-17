@@ -6,11 +6,11 @@
     <title>Jessy Chen | BA & QA Portfolio</title>
     <style>
         :root {
-            --dora-blue: #00a0e9;   /* 哆啦A梦经典蓝 */
-            --dora-red: #e53935;    /* 标志性红项圈色 */
-            --dora-yellow: #ffca28; /* 铃铛金 */
-            --bg-silver: #f8f9fa;   /* 极细微的铝灰色背景 */
-            --text-dark: #2c3e50;   /* 深邃的专业灰 */
+            --dora-blue: #00a0e9;   
+            --dora-red: #e53935;    
+            --dora-yellow: #ffca28; 
+            --bg-silver: #f8f9fa;   
+            --text-dark: #2c3e50;   
             --text-gray: #95a5a6;
             --border-light: rgba(0, 160, 233, 0.1);
         }
@@ -26,25 +26,17 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 极简导航栏 */
+        /* 极简导航 */
         nav { margin-bottom: 80px; display: flex; gap: 40px; }
         nav a { 
-            text-decoration: none; 
-            font-size: 14px; 
-            color: var(--text-gray); 
-            font-weight: 500; 
-            transition: 0.3s;
-            position: relative;
+            text-decoration: none; font-size: 13px; color: var(--text-gray); 
+            font-weight: 600; transition: 0.3s; letter-spacing: 1px;
         }
         nav a:hover { color: var(--dora-blue); }
-        nav a:hover::after {
-            content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: var(--dora-blue);
-        }
 
         /* 英雄区 */
         .hero { margin-bottom: 80px; }
         h1 { font-size: 42px; font-weight: 700; margin: 0; letter-spacing: -1px; }
-        
         .red-collar { 
             width: 80px; height: 4px; background: var(--dora-red); 
             margin: 15px 0 25px 0; border-radius: 2px; position: relative;
@@ -55,34 +47,37 @@
         }
         .hero-desc { font-size: 17px; color: var(--text-gray); max-width: 600px; }
 
-        /* 统一标题样式 */
         .section-title { 
-            font-size: 14px; text-transform: uppercase; letter-spacing: 2px; 
-            color: var(--dora-blue); margin: 60px 0 30px 0; font-weight: 700;
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 8px;
-            display: inline-block;
+            font-size: 13px; text-transform: uppercase; letter-spacing: 2px; 
+            color: var(--dora-blue); margin: 60px 0 24px 0; font-weight: 700;
         }
 
-        /* 经历与学历专栏布局 */
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .info-item { position: relative; padding-left: 20px; border-left: 2px solid var(--border-light); }
-        .info-item h3 { font-size: 18px; margin: 0 0 5px 0; color: var(--text-dark); }
-        .info-item .sub { font-size: 14px; color: var(--dora-blue); font-weight: 600; margin-bottom: 5px; }
-        .info-item .date { font-size: 13px; color: var(--text-gray); font-family: monospace; }
-
-        /* 爱好展示区 */
-        .hobby-container { display: flex; gap: 20px; flex-wrap: wrap; }
-        .hobby-tag { 
-            background: #fff; padding: 10px 20px; border-radius: 50px; 
-            font-size: 14px; color: var(--text-dark); border: 1px solid var(--border-light);
-            display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        /* 灵动的爱好展示区 */
+        .hobby-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hobby-card {
+            background: #fff;
+            padding: 16px 24px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
         }
+        .hobby-card:hover {
+            border-color: var(--dora-blue);
+            transform: rotate(-2deg) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 160, 233, 0.1);
+        }
+        .hobby-card span { font-size: 20px; }
 
         /* 项目网格 */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-        /* 百宝袋风格卡片 */
         .pocket-card {
             background: #ffffff;
             padding: 32px;
@@ -118,7 +113,7 @@
         }
 
         @media (max-width: 700px) { 
-            .grid, .info-grid { grid-template-columns: 1fr; }
+            .grid { grid-template-columns: 1fr; }
             h1 { font-size: 32px; }
         }
     </style>
@@ -133,31 +128,13 @@
         <p class="hero-desc">PwC AC | Quality Assurance & Business Analyst. <br>致力于构建如“时光机”般可靠的自动化工程方案与业务逻辑闭环。</p>
     </header>
 
-    <div class="info-grid">
-        <section>
-            <h2 class="section-title">Experience / 工作经历</h2>
-            <div class="info-item">
-                <div class="sub">PwC AC</div>
-                <h3>软件测试工程师</h3>
-                <div class="date">2021.01 - 2025.06</div>
-            </div>
-        </section>
-        <section>
-            <h2 class="section-title">Education / 教育背景</h2>
-            <div class="info-item">
-                <div class="sub">上海电力大学</div>
-                <h3>计算机科学与技术</h3>
-                <div class="date">2017.09 - 2021.06</div>
-            </div>
-        </section>
-    </div>
-
     <section>
-        <h2 class="section-title">Hobbies / 个人生活</h2>
-        <div class="hobby-container">
-            <div class="hobby-tag">🏸 羽毛球</div>
-            <div class="hobby-tag">📷 摄影</div>
-            <div class="hobby-tag">📚 漫画</div>
+        <h2 class="section-title">Life Slice / 生活切片</h2>
+        <div class="hobby-grid">
+            <div class="hobby-card"><span>🏸</span> 羽毛球</div>
+            <div class="hobby-card"><span>📷</span> 摄影</div>
+            <div class="hobby-card"><span>📚</span> 漫画</div>
+            <div class="hobby-card"><span>🛸</span> 梦想家</div>
         </div>
     </section>
 
@@ -229,7 +206,7 @@
             { name: "HOME", url: "index.html" },
             { name: "GITHUB", url: "https://github.com/jcc371620", target: "_blank" },
             { name: "LINKEDIN", url: "#" },
-            { name: "CONTACT", url: "mailto:jcc371620@gmail.com" }
+            { name: "CONTACT", url: "mailto:your-email@example.com" } // 邮箱信息已脱敏
         ];
         document.getElementById('main-nav').innerHTML = navLinks.map(n => `<a href="${n.url}" ${n.target ? `target="${n.target}"`: ""}>${n.name}</a>`).join('');
     </script>
