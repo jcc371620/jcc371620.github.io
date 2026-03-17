@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessy Chen | Personal Space</title>
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <title>Jessy Chen | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <style>
         :root {
             --dora-blue: #00a0e9;   
             --dora-red: #e53935;    
             --dora-yellow: #ffca28; 
-            --bg-silver: #fdfdfd;   /* 调成淡淡的奶白色，更温馨 */
-            --text-dark: #445566;   
-            --text-gray: #8899aa;
-            --border-blue: rgba(0, 160, 233, 0.12);
+            --bg-silver: #fdfdfd;   
+            --text-main-title: #546e7a; 
+            --text-dark: #607d8b;       
+            --text-gray: #90a4ae;
         }
         
         @keyframes doorOpen {
@@ -24,20 +24,19 @@
         body { 
             background: var(--bg-silver); 
             color: var(--text-dark); 
-            /* 使用站酷小薇体 */
-            font-family: 'ZCOOL XiaoWei', "PingFang SC", "Microsoft YaHei", sans-serif; 
+            font-family: 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif; 
             line-height: 1.6; 
             padding: 60px 24px 120px; 
-            max-width: 900px; 
+            max-width: 950px; 
             margin: 0 auto; 
             animation: doorOpen 0.8s ease-out;
             display: flex;
             flex-direction: column;
             align-items: center; 
             -webkit-font-smoothing: antialiased;
+            font-weight: normal !important;
         }
 
-        /* 顶部竹蜻蜓动态线条 */
         .top-propeller {
             position: fixed; top: 0; left: 0; width: 100%; height: 5px;
             background: linear-gradient(90deg, transparent, var(--dora-blue), var(--dora-yellow), var(--dora-blue), transparent);
@@ -45,111 +44,108 @@
             animation: movePropeller 3s infinite linear;
             z-index: 1000;
         }
-        @keyframes movePropeller {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
 
         nav { margin-bottom: 60px; display: flex; gap: 40px; justify-content: center; }
-        nav a { text-decoration: none; font-size: 15px; color: var(--text-gray); transition: 0.3s; }
-        nav a:hover { color: var(--dora-blue); transform: scale(1.1); }
+        nav a { text-decoration: none; font-size: 15px; color: var(--text-gray); transition: 0.3s; font-weight: normal; }
+        nav a:hover { color: var(--dora-blue); transform: scale(1.05); }
 
         .hero { margin-bottom: 80px; text-align: center; }
-        h1 { font-size: 52px; font-weight: 400; margin: 0; letter-spacing: 3px; color: #222; }
+        h1 { font-size: 58px; font-weight: 400; margin: 0; letter-spacing: 2px; color: var(--text-main-title); }
         
         .red-collar { 
-            width: 140px; height: 7px; background: var(--dora-red); 
+            width: 140px; height: 8px; background: var(--dora-red); 
             margin: 28px auto; border-radius: 10px; position: relative;
         }
         .bell {
-            position: absolute; right: -20px; top: -7px; width: 22px; height: 22px; 
+            position: absolute; right: -22px; top: -8px; width: 24px; height: 24px; 
             background: var(--dora-yellow); border-radius: 50%; 
-            box-shadow: 0 0 15px rgba(255,202,40,0.6);
+            box-shadow: 0 4px 10px rgba(255,202,40,0.2);
             cursor: pointer;
-            transition: 0.3s;
         }
-        .bell:hover { animation: ring 0.5s infinite; transform: scale(1.1); }
+        .bell:hover { animation: ring 0.5s infinite; }
         @keyframes ring {
             0%, 100% { transform: rotate(0); }
-            25% { transform: rotate(25deg); }
-            75% { transform: rotate(-25deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-20deg); }
         }
-        .hero-desc { font-size: 21px; color: var(--text-gray); max-width: 650px; margin: 0 auto; line-height: 1.8; }
+        .hero-desc { font-size: 20px; color: var(--text-gray); max-width: 750px; margin: 0 auto; font-weight: normal; }
 
         .section-title { 
             font-size: 16px; text-transform: uppercase; letter-spacing: 4px; 
             color: var(--dora-blue); margin-bottom: 35px; display: block;
-            text-align: center; font-weight: bold;
+            text-align: center; font-weight: normal;
         }
 
         .hobby-grid { 
-            display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; 
+            display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; 
             margin-bottom: 110px; width: 100%;
         }
         .hobby-card {
-            background: #fff; padding: 14px 28px; border-radius: 50px;
-            display: flex; align-items: center; gap: 12px; font-size: 18px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.04); transition: 0.4s;
-            border: 2px solid transparent;
+            background: #fff; 
+            width: 100px; height: 100px; 
+            border-radius: 50%; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            gap: 5px; font-size: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: 0.4s;
+            border: 1px solid #eceff1;
+            font-weight: normal;
+            color: var(--text-dark);
         }
-        .hobby-card:hover { 
-            transform: translateY(-6px) rotate(-3deg); 
-            border-color: var(--dora-blue);
-            box-shadow: 0 10px 25px rgba(0,160,233,0.12);
-        }
+        .hobby-card span { font-size: 24px; }
+        .hobby-card:hover { transform: scale(1.1); border-color: var(--dora-blue); color: var(--dora-blue); }
 
+        /* --- 百宝袋容器 --- */
         .pocket-container {
-            background: rgba(0, 160, 233, 0.05); 
-            padding: 85px 50px;
-            border-radius: 50px 50px 250px 250px; 
-            border: 3px dashed rgba(0, 160, 233, 0.15); 
+            background: rgba(0, 160, 233, 0.03); 
+            padding: 100px 60px 160px; /* 增加内边距，确保内部圆角卡片不紧贴边缘 */
+            border-radius: 180px; 
+            border: 2px dashed rgba(0, 160, 233, 0.12); 
             width: 100%;
             box-sizing: border-box;
-            box-shadow: inset 0 0 40px rgba(255,255,255,0.5);
+            position: relative;
         }
 
         .grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 30px; 
+            gap: 32px; 
             text-align: left; 
         }
         
+        /* --- 卡片弧度同步调整为超大圆角 --- */
         .pocket-card {
             background: #ffffff; 
-            padding: 35px; border-radius: 25px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 45px 50px; /* 增加内边距，让文字在圆角内有更多呼吸空间 */
+            border-radius: 80px; /* 同步百宝袋的大圆角风格 */
+            transition: 0.3s ease;
             text-decoration: none; color: inherit;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.01);
             border: 1.5px solid transparent;
         }
         .pocket-card:hover { 
-            transform: translateY(-12px);
-            box-shadow: 0 18px 40px rgba(0, 160, 233, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 160, 233, 0.1);
             border-color: var(--dora-blue);
         }
         
-        .sub-tag { font-size: 11px; color: var(--dora-blue); font-weight: bold; margin-bottom: 12px; display: block; letter-spacing: 1.5px; }
-        h4 { margin: 0 0 15px 0; font-size: 24px; color: #334455; }
-        .pocket-card p { margin: 0; font-size: 16px; color: var(--text-gray); line-height: 1.8; }
+        .sub-tag { font-size: 11px; color: var(--dora-blue); font-weight: normal; margin-bottom: 8px; display: block; opacity: 0.8; letter-spacing: 1px; }
+        h4 { margin: 0 0 10px 0; font-size: 24px; color: var(--text-main-title); letter-spacing: 0.5px; font-weight: normal; }
+        .pocket-card p { margin: 0; font-size: 15px; color: var(--text-dark); line-height: 1.7; font-weight: normal; }
         
-        .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { 
-            font-size: 12px; color: #8899aa; background: #f0f4f8; 
-            padding: 5px 14px; border-radius: 8px; 
-        }
-        .pocket-card:hover .tag { background: rgba(0,160,233,0.1); color: var(--dora-blue); }
+        .tags { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { font-size: 11px; color: var(--text-gray); background: #f5f7f8; padding: 4px 14px; border-radius: 20px; font-weight: normal; } /* tag也微调为圆润风格 */
 
         .footer { 
-            margin-top: 130px; padding: 40px 0; width: 100%;
-            border-top: 2px dashed #ddd; font-size: 16px; color: var(--text-gray); 
+            margin-top: 100px; padding: 40px 0; width: 100%;
+            border-top: 2px dashed #eceff1; font-size: 15px; color: var(--text-gray); 
             display: flex; justify-content: space-between; 
-            align-items: center;
         }
 
         @media (max-width: 768px) { 
             .grid { grid-template-columns: 1fr; }
-            .pocket-container { border-radius: 40px 40px 120px 120px; padding: 60px 25px; }
-            h1 { font-size: 40px; }
+            .pocket-container { border-radius: 60px; padding: 60px 20px 100px; }
+            .pocket-card { border-radius: 40px; padding: 35px; }
+            h1 { font-size: 42px; }
         }
     </style>
 </head>
@@ -160,20 +156,18 @@
     <nav id="main-nav"></nav>
 
     <header class="hero">
-        <h1>陈诗洁 | Jessy Chen</h1>
-        <div class="red-collar">
-            <div class="bell" title="叮当~ 梦想起飞咯！"></div>
-        </div>
-        <p class="hero-desc">竹蜻蜓执照持有者 | Quality Assurance | Business Analyst. <br>致力于构建如“时光机”般可靠的工程方案，一起让梦想起飞吧！</p>
+        <h1>陈诗洁 | JESSY CHEN</h1>
+        <div class="red-collar"><div class="bell"></div></div>
+        <p class="hero-desc">Quality Assurance Engineer & Business Analyst <br>专注于 Salesforce 生态治理、自动化质量工程及业务全链路逻辑优化。</p>
     </header>
 
     <section style="width: 100%;">
         <span class="section-title">Life Slice / 生活切片</span>
         <div class="hobby-grid">
-            <div class="hobby-card"><span>🏸</span> 羽毛球</div>
-            <div class="hobby-card"><span>📷</span> 摄影</div>
-            <div class="hobby-card"><span>📚</span> 漫画</div>
-            <div class="hobby-card"><span>🛸</span> 梦想家</div>
+            <div class="hobby-card"><span>🏸</span>羽毛球</div>
+            <div class="hobby-card"><span>📷</span>摄影</div>
+            <div class="hobby-card"><span>📚</span>漫画</div>
+            <div class="hobby-card"><span>🛸</span>梦想家</div>
         </div>
     </section>
 
@@ -183,20 +177,54 @@
     </section>
 
     <footer class="footer">
-        <div>© 2026 Jessy Chen.</div>
-        <div style="color: var(--dora-red); font-weight: bold;">叮当~ 梦想成真 ✨</div>
+        <div>© 2026 JESSY CHEN.</div>
+        <div style="color: var(--dora-red); font-weight: normal;">叮当~ 🔔 梦想成真 ✨</div>
     </footer>
 
     <script>
         const projects = [
-            { title: "自动化测试工程", sub: "QUALITY ASSURANCE", desc: "把重复劳动交给脚本，像时光机一样精准回溯逻辑 Bug。", tags: ["Python", "Playwright"], url: "#" },
-            { title: "接口自动化与性能", sub: "PERFORMANCE", desc: "探究数据流动的奥秘，确保 API 像竹蜻蜓一样平稳起飞。", tags: ["Requests", "JMeter"], url: "#" },
-            { title: "DevOps 流水线建设", sub: "CI/CD", desc: "打造全自动的任意门，让代码一键直达生产环境。", tags: ["GitHub Actions", "Docker"], url: "#" },
-            { title: "数据分析与可视化", sub: "BUSINESS INTEL", desc: "在繁杂的数据里寻找宝藏，绘制业务增长的秘密地图。", tags: ["SQL", "Power BI"], url: "#" },
-            { title: "Salesforce 系统管理", sub: "CRM SYSTEM", desc: "优化云端逻辑，让 CRM 系统像百宝袋一样无所不能。", tags: ["Salesforce", "SOQL"], url: "#" },
-            { title: "业务流程架构设计", sub: "WORKFLOW", desc: "梳理复杂的协作链路，输出清晰如漫画般的业务流程。", tags: ["BPMN 2.0", "Xmind"], url: "#" },
-            { title: "交互设计与原型工程", sub: "UX/UI DESIGN", desc: "用 Figma 勾勒梦想，打造有温度的交互体验。", tags: ["Figma", "Axure"], url: "#" },
-            { title: "质量工程策略咨询", sub: "STRATEGY", desc: "从源头预防风险，为项目交付保驾护航。", tags: ["Agile", "Consulting"], url: "#" }
+            { 
+                title: "Salesforce CRM管理系统", 
+                sub: "CRM", 
+                desc: "深度参与 Salesforce 生态治理，优化跨对象数据交互逻辑，确保多云环境下的业务数据流转一致性。", 
+                tags: ["Sales Cloud", "Marketing Cloud", "Consumer Cloud", "SOQL"], 
+                url: "#" 
+            },
+            { 
+                title: "自动化测试工程", 
+                sub: "AUTOMATION", 
+                desc: "构建基于 Python 的全链路自动化体系，涵盖 UI 交互测试与后端接口校验，显著提升回归效率。", 
+                tags: ["Python", "Playwright", "Postman", "Requests"], 
+                url: "#" 
+            },
+            { 
+                title: "数据分析与可视化", 
+                sub: "ANALYTICS", 
+                desc: "通过 SQL/SOQL 深度清洗原始数据，构建业务核心 KPI 看板，实现从数据埋点到质量决策的闭环。", 
+                tags: ["Python", "SQL", "Power BI", "Tableau"], 
+                url: "#" 
+            },
+            { 
+                title: "交互设计与原型工程", 
+                sub: "UX/UI", 
+                desc: "产出高保真业务系统原型，确保复杂 B 端产品的交互逻辑严密，降低产研沟通损耗。", 
+                tags: ["Figma", "Ant Design", "Axure", "Prototype"], 
+                url: "#" 
+            },
+            { 
+                title: "业务流程架构设计", 
+                sub: "ARCHITECTURE", 
+                desc: "运用标准建模语言梳理业务全链路，识别瓶颈节点并输出逻辑严密的技术规格说明书。", 
+                tags: ["BPMN", "UML", "Flowchart", "Business Analysis"], 
+                url: "#" 
+            },
+            { 
+                title: "DevOps 流水线建设", 
+                sub: "DEVOPS", 
+                desc: "配置持续集成工作流，将自动化冒烟测试集成至 CI 环节，实现质量左移与版本快速交付。", 
+                tags: ["GitHub Actions", "Docker", "CI/CD", "Git"], 
+                url: "#" 
+            }
         ];
 
         document.getElementById('project-list').innerHTML = projects.map(p => `
