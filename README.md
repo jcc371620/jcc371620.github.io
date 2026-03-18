@@ -15,7 +15,7 @@
 ## 🧰 Tech Stack
 
 💻 **Languages**
-- Python | JavaScript | SQL | SOQL
+- Python | JavaScript | SQL | SOQL 
 
 🧪 **Testing**
 - Pytest | Requests | Playwright
