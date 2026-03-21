@@ -1,9 +1,35 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.6.1">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.6.4">
   <diagram name="Page-1" id="N7akz1HGQb0he9OmVMGb">
-    <mxGraphModel dx="983" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1426" dy="789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="PrQDAXlm08NAEykPTKTh-27" parent="1" style="swimlane;whiteSpace=wrap;html=1;align=left;" value="供应链" vertex="1">
+          <mxGeometry height="200" width="200" x="90" y="30" as="geometry">
+            <mxRectangle height="30" width="80" x="90" y="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-28" parent="PrQDAXlm08NAEykPTKTh-27" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;p data-start=&quot;0&quot; data-end=&quot;85&quot;&gt;供应链（Supply Chain）指的是一个产品从&lt;strong data-start=&quot;25&quot; data-end=&quot;63&quot;&gt;原材料获取 → 生产制造 → 运输配送 → 销售 → 最终到达消费者&lt;/strong&gt;的全过程，以及参与这个过程的所有企业和环节。&lt;/p&gt;&lt;p data-start=&quot;87&quot; data-end=&quot;110&quot;&gt;可以把它理解为一条“从源头到用户”的完整链条。&lt;/p&gt;" vertex="1">
+          <mxGeometry height="94" width="170" x="14" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-52" parent="1" style="swimlane;whiteSpace=wrap;html=1;verticalAlign=middle;align=left;" value="原材料供应" vertex="1">
+          <mxGeometry height="140" width="200" x="100" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-53" parent="PrQDAXlm08NAEykPTKTh-52" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;li data-section-id=&quot;1fd8lfo&quot; data-start=&quot;152&quot; data-end=&quot;165&quot;&gt;比如钢铁、棉花、芯片等&lt;/li&gt;&lt;li data-section-id=&quot;1nbq7gy&quot; data-start=&quot;169&quot; data-end=&quot;181&quot;&gt;由供应商提供给制造商&lt;/li&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-59" parent="1" style="swimlane;whiteSpace=wrap;html=1;verticalAlign=middle;align=left;" value="生产制造" vertex="1">
+          <mxGeometry height="140" width="200" x="100" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-60" parent="PrQDAXlm08NAEykPTKTh-59" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;li data-section-id=&quot;1codpr4&quot; data-start=&quot;198&quot; data-end=&quot;211&quot;&gt;工厂把原材料加工成产品&lt;/li&gt;&lt;li data-section-id=&quot;im9kdr&quot; data-start=&quot;215&quot; data-end=&quot;227&quot;&gt;例如：把布料做成衣服&lt;/li&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-61" parent="1" style="swimlane;whiteSpace=wrap;html=1;verticalAlign=middle;align=left;" value="仓库与存储" vertex="1">
+          <mxGeometry height="140" width="200" x="90" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="PrQDAXlm08NAEykPTKTh-62" parent="PrQDAXlm08NAEykPTKTh-61" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;li data-section-id=&quot;79gytq&quot; data-start=&quot;229&quot; data-end=&quot;261&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;产品会被存放在仓库中等待分发&lt;/span&gt;&lt;/li&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="20" y="40" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
